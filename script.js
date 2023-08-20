@@ -709,7 +709,7 @@ function displayMoviesInMonth() {
         tip.innerHTML = "Tip : Click on Date Heading to view movies releasing this month";
     }
 
-    console.log(menuView)
+    // console.log(menuView)
 
 }
 
