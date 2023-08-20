@@ -1,50 +1,103 @@
 <!DOCTYPE html>
-<!-- Coding By CodingNepal - youtube.com/codingnepal -->
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Form in PHP | CodingNepal</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinema Calender</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <div class="wrapper">
-    <header>Send us a Message</header>
-    <form action="#">
-      <div class="dbl-field">
-        <div class="field">
-          <input type="text" name="name" placeholder="Enter your name">
-          <i class='fas fa-user'></i>
-        </div>
-        <div class="field">
-          <input type="text" name="email" placeholder="Enter your email">
-          <i class='fas fa-envelope'></i>
-        </div>
-      </div>
-      <div class="dbl-field">
-        <div class="field">
-          <input type="text" name="phone" placeholder="Enter your phone">
-          <i class='fas fa-phone-alt'></i>
-        </div>
-        <div class="field">
-          <input type="text" name="website" placeholder="Enter your website">
-          <i class='fas fa-globe'></i>
-        </div>
-      </div>
-      <div class="message">
-        <textarea placeholder="Write your message" name="message"></textarea>
-        <i class="material-icons">message</i>
-      </div>
-      <div class="button-area">
-        <button type="submit">Send Message</button>
-        <span></span>
-      </div>
-    </form>
-  </div>
+    <h1>Cinema Calender</h1>
+    <div class="outline">
 
-  <script src="script.js"></script>
+        <div class="heading">
+            <li onclick="dec()">-</li>
+            <h2 onclick="viewMonths()" id="Month_Year_Heading">August, 2023</h2>
+            <li onclick="inc()">+</li>
+        </div>
 
+        <div class="body">
+            <ul class="days">
+                <li>SUN</li>
+                <li>MON</li>
+                <li>TUE</li>
+                <li>WED</li>
+                <li>THU</li>
+                <li>FRI</li>
+                <li>SAT</li>
+            </ul>
+            <ul class="dates row1">
+                
+            </ul>
+            <ul class="dates row2">
+                
+            </ul>
+            <ul class="dates row3">
+               
+            </ul>
+            <ul class="dates row4">
+               
+            </ul>
+            <ul class="dates row5">
+                
+            </ul>
+            <ul class="dates row6">
+                
+            </ul>
+        </div>
+
+        <div class="info">
+            <h4 id="selectedDate" onclick="displayMoviesInMonth(this.innerHTML)">6th Aug 2023</h4>
+            <ul class="listOfMovies">
+                
+            </ul>
+
+            <ul class="monthViewMoviesUL">
+                <li>
+                   <h2 class="listDate">19</h2>
+                    <div class="listInfo">
+                        <h3>Baghavath Kesari</h3>
+                        <p>Balakrishna, Kajal, Sree Leela</p>
+                    </div>
+                </li>
+
+                <li>
+                    <h2 class="listDate">20</h2>
+                     <div class="listInfo">
+                         <h3>Tiger Nageswara Rao</h3>
+                         <p>Raviteja, Nupur Sanon</p>
+                     </div>
+                 </li>
+            </ul>
+            <p class="tip">Tip : Click on Date Heading to view movies releasing this month</p>
+        </div>
+
+        <div class="monthsBlock">
+            <ul class="monthsList" id="monthRow1">
+                <li id="box1" class="boxes" onclick="forwardYMMD(this.innerHTML)">January</li>
+                <li id="box2" class="boxes" onclick="forwardYMMD(this.innerHTML)">Febraury</li>
+                <li id="box3" class="boxes" onclick="forwardYMMD(this.innerHTML)">March</li>
+                <li id="box4" class="boxes" onclick="forwardYMMD(this.innerHTML)">April</li>
+            </ul>
+            <ul class="monthsList" id="monthRow2">
+                <li id="box5" class="boxes" onclick="forwardYMMD(this.innerHTML)">May</li>
+                <li id="box6" class="boxes" onclick="forwardYMMD(this.innerHTML)">June</li>
+                <li id="box7" class="boxes" onclick="forwardYMMD(this.innerHTML)">July</li>
+                <li id="box8" class="boxes" onclick="forwardYMMD(this.innerHTML)">August</li>
+            </ul>
+            <ul class="monthsList" id="monthRow3">
+                <li id="box9" class="boxes" onclick="forwardYMMD(this.innerHTML)">September</li>
+                <li id="box10" class="boxes" onclick="forwardYMMD(this.innerHTML)">October</li>
+                <li id="box11" class="boxes" onclick="forwardYMMD(this.innerHTML)">November</li>
+                <li id="box12" class="boxes" onclick="forwardYMMD(this.innerHTML)">December</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
 </body>
-</html>
+
+</html> 
