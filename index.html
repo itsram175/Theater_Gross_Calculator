@@ -4,100 +4,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cinema Calender</title>
+    <title>RT Smart Tools</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1>Cinema Calender</h1>
-    <div class="outline">
 
-        <div class="heading">
-            <li onclick="dec()">-</li>
-            <h2 onclick="viewMonths()" id="Month_Year_Heading">August, 2023</h2>
-            <li onclick="inc()">+</li>
-        </div>
+    <div class="header">
+        <h1>RT Smart Tools</h1>
+        <i></i>
+    </div>
 
-        <div class="body">
-            <ul class="days">
-                <li>SUN</li>
-                <li>MON</li>
-                <li>TUE</li>
-                <li>WED</li>
-                <li>THU</li>
-                <li>FRI</li>
-                <li>SAT</li>
-            </ul>
-            <ul class="dates row1">
-                
-            </ul>
-            <ul class="dates row2">
-                
-            </ul>
-            <ul class="dates row3">
-               
-            </ul>
-            <ul class="dates row4">
-               
-            </ul>
-            <ul class="dates row5">
-                
-            </ul>
-            <ul class="dates row6">
-                
-            </ul>
-        </div>
+    <div class="content">
 
-        <div class="info">
-            <h4 id="selectedDate" onclick="displayMoviesInMonth(this.innerHTML)">6th Aug 2023</h4>
-            <ul class="listOfMovies">
-                
-            </ul>
+        <h2>TOOLS</h2>
+        <ul class="OptionsList">
+            <!-- <li><a href="/resume.html" target="_blank">Resume Building</a></li> -->
+            <li><a href="/photoPrint.html" target="_blank">Photo Printing</a></li>
+            <li><a href="/photoModify.html" target="_blank">Add Sign/Date to Photos</a></li>
+        </ul>
 
-            <ul class="monthViewMoviesUL">
-                <li>
-                   <h2 class="listDate">19</h2>
-                    <div class="listInfo">
-                        <h3>Baghavath Kesari</h3>
-                        <p>Balakrishna, Kajal, Sree Leela</p>
-                    </div>
-                </li>
-
-                <li>
-                    <h2 class="listDate">20</h2>
-                     <div class="listInfo">
-                         <h3>Tiger Nageswara Rao</h3>
-                         <p>Raviteja, Nupur Sanon</p>
-                     </div>
-                 </li>
+        <h2>QUICK LINKS</h2>
+        <div class="quickLinks">
+            <ul>
+                <li><a href="https://voters.eci.gov.in/" target="_blank">Voter ID</a></li>
+                <li><a href="https://www.onlineservices.nsdl.com/paam/endUserRegisterContact.html" target="_blank">Pan
+                        Card</a></li>
+                <li><a href="https://myaadhaar.uidai.gov.in/" target="_blank">e-Aadhaar</a></li>
+                <li><a href="https://healthid.ndhm.gov.in/" target="_blank">ABHA</a></li>
             </ul>
-            <p class="tip">Tip : Click on Date Heading to view movies releasing this month</p>
-        </div>
-
-        <div class="monthsBlock">
-            <ul class="monthsList" id="monthRow1">
-                <li id="box1" class="boxes" onclick="forwardYMMD(this.innerHTML)">January</li>
-                <li id="box2" class="boxes" onclick="forwardYMMD(this.innerHTML)">Febraury</li>
-                <li id="box3" class="boxes" onclick="forwardYMMD(this.innerHTML)">March</li>
-                <li id="box4" class="boxes" onclick="forwardYMMD(this.innerHTML)">April</li>
+            <ul>
+                <li><a href="https://ecet.tsche.ac.in/" target="_blank">TS ECET</a></li>
+                <li><a href="https://icet.tsche.ac.in/" target="_blank">TS ICET</a></li>
+                <li><a href="https://eamcet.tsche.ac.in/" target="_blank">TS EAMCET</a></li>
+                <li><a href="https://polycet.sbtet.telangana.gov.in/#!/index" target="_blank">TS POLYCET</a></li>
             </ul>
-            <ul class="monthsList" id="monthRow2">
-                <li id="box5" class="boxes" onclick="forwardYMMD(this.innerHTML)">May</li>
-                <li id="box6" class="boxes" onclick="forwardYMMD(this.innerHTML)">June</li>
-                <li id="box7" class="boxes" onclick="forwardYMMD(this.innerHTML)">July</li>
-                <li id="box8" class="boxes" onclick="forwardYMMD(this.innerHTML)">August</li>
+            <ul>
+                <li><a href="https://tsecet.nic.in/default.aspx" target="_blank">ECET NIC</a></li>
+                <li><a href="https://tsicet.nic.in/default.aspx" target="_blank">ICET NIC</a></li>
+                <li><a href="https://tseamcet.nic.in/default.aspx" target="_blank">EAMCET NIC</a></li>
+                <li><a href="https://tspolycet.nic.in/default.aspx" target="_blank">POLYCET NIC</a></li>
             </ul>
-            <ul class="monthsList" id="monthRow3">
-                <li id="box9" class="boxes" onclick="forwardYMMD(this.innerHTML)">September</li>
-                <li id="box10" class="boxes" onclick="forwardYMMD(this.innerHTML)">October</li>
-                <li id="box11" class="boxes" onclick="forwardYMMD(this.innerHTML)">November</li>
-                <li id="box12" class="boxes" onclick="forwardYMMD(this.innerHTML)">December</li>
+            <ul>
+                <li><a href="https://mail.google.com/" target="_blank">Gmail</a></li>
+                <li><a href="https://www.google.com/" target="_blank">Google</a></li>
+                <li><a href="https://login.yahoo.com/?.src=ym&pspid=159600001&activity=mail-direct&.lang=en-GB&.intl=gb&.done=https%3A%2F%2Fmail.yahoo.com%2Fd"
+                        target="_blank">Yahoo Mail</a></li>
+                <li><a href="https://web.whatsapp.com/" target="_blank">Whatsapp Web</a></li>
+            </ul>
+            <ul>
+                <li><a href="https://epds.telangana.gov.in/FoodSecurityAct/?wicket:bookmarkablePage=:nic.fsc.foodsecurity.FscSearch"
+                        target="_blank">FSC</a></li>
+                <li><a href="https://telanganaepass.cgg.gov.in/" target="_blank">E-PASS</a></li>
+                <li><a href="https://online.tsrtcpass.in/" target="_blank">BUS PASS</a></li>
+                <li><a href="https://ts.meeseva.telangana.gov.in/meeseva/home.htm" target="_blank">MEE SEVA</a></li>
+            </ul>
+            <ul>
+                <li><a href="https://ssc.nic.in/" target="_blank">SSC</a></li>
+                <li><a href="https://indianrailways.gov.in/railwayboard/view_section.jsp?lang=0&id=0,7,1281"
+                        target="_blank">RRB</a></li>
+                <li><a href="https://www.tspsc.gov.in/" target="_blank">TSPSC</a></li>
+                <li><a href="https://www.tslprb.in/" target="_blank">TSPRLB</a></li>
             </ul>
         </div>
 
     </div>
 
+    <footer>Designed and Developed by RT Web & App Developers</footer>
     <script src="script.js"></script>
 </body>
 
-</html> 
+</html>
