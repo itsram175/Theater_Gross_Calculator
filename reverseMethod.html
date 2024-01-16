@@ -17,12 +17,12 @@
             height: 100%;
             overflow: hidden;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #FAF9F6;
+            background-color: rgb(198, 205, 244);
         }
 
         h1 {
             text-align: center;
-            background-color: rgb(3, 20, 35);
+            background-color: rgb(5, 13, 102);
             margin: 0;
             padding: 4%;
             width: 92%;
@@ -38,7 +38,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: 10px;
+            margin-top: 20px;
             transition-duration: 0.5s;
         }
 
@@ -58,6 +58,7 @@
             width: 28.5%;
             text-align: center;
             margin: 5px 0px;
+            
         }
 
         label {
@@ -81,7 +82,7 @@
             border: none;
             color: white;
             font-weight: bold;
-            background-color: rgb(8, 12, 50);
+            background-color: rgb(5, 13, 102);
         }
 
         .screen2 {
@@ -91,6 +92,7 @@
             align-items: center;
             transition-duration: 0.5s;
             display: none;
+            margin-top: 10px;
         }
 
         p {
@@ -119,16 +121,17 @@
 
         .totalGross {
             text-align: center;
-            border-top: solid 3px black;
             color: white;
-            background-color: rgb(8, 12, 50);
+            background-color: rgb(25, 33, 129);
             padding-bottom: 10px;
             border-radius: 15px;
+            border: none;
         }
-        footer{
+
+        footer {
             position: absolute;
-            bottom:0;
-            background-color: rgb(3, 20, 35);
+            bottom: 0;
+            background-color: rgb(5, 13, 102);
             width: 100%;
             text-align: center;
             color: white;
@@ -317,10 +320,10 @@
                 totalTicketsSoldNumber = parseInt((Section1FULL - ticketSoldInput1.value)) + parseInt(Section2FULL - ticketSoldInput2.value) + parseInt(Section3FULL - ticketSoldInput3.value) + parseInt(Section4FULL - ticketSoldInput4.value);
                 totalGrossAmount = section1Gross + section2Gross + section3Gross + section4Gross;
 
-                sectionCalculation1.innerHTML = priceInputS1.value + " * " + (Section1FULL - ticketSoldInput1.value) + " = " + section1Gross;
-                sectionCalculation2.innerHTML = priceInputS2.value + " * " + (Section2FULL - ticketSoldInput2.value) + " = " + section2Gross;
-                sectionCalculation3.innerHTML = priceInputS3.value + " * " + (Section3FULL - ticketSoldInput3.value) + " = " + section3Gross;
-                sectionCalculation4.innerHTML = priceInputS4.value + " * " + (Section4FULL - ticketSoldInput4.value) + " = " + section4Gross;
+                sectionCalculation1.innerHTML = priceInputS1.value + " x " + (Section1FULL - ticketSoldInput1.value) + " = " + section1Gross;
+                sectionCalculation2.innerHTML = priceInputS2.value + " x " + (Section2FULL - ticketSoldInput2.value) + " = " + section2Gross;
+                sectionCalculation3.innerHTML = priceInputS3.value + " x " + (Section3FULL - ticketSoldInput3.value) + " = " + section3Gross;
+                sectionCalculation4.innerHTML = priceInputS4.value + " x " + (Section4FULL - ticketSoldInput4.value) + " = " + section4Gross;
 
                 totalGrossAmount = totalGrossAmount.toString();
                 totalTicketsSoldNumber = totalTicketsSoldNumber.toString();
