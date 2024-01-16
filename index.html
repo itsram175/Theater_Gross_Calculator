@@ -4,74 +4,488 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RT Smart Tools</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Theater Gross Calculator</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #FAF9F6;
+        }
+
+        h1 {
+            text-align: center;
+            background-color: rgb(3, 20, 35);
+            margin: 0;
+            padding: 4%;
+            width: 92%;
+            color: white;
+            font-size: 1.5em;
+            overflow: hidden;
+            box-shadow: 0px 1px 10px black;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        .screen1 {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 10px;
+            transition-duration: 0.5s;
+        }
+
+        .MultiInputs {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .MultiInputs button {
+            border-radius: 0px;
+        }
+
+        input {
+            height: 35px;
+            width: 28.5%;
+            text-align: center;
+            margin: 5px 0px;
+        }
+
+        label {
+            width: 92%;
+            font-weight: bold;
+        }
+
+        .longInput {
+            width: 90%;
+            border-radius: 10px;
+            padding: 2px 5px;
+            border-style: solid;
+            border-color: black;
+            text-align: left;
+        }
+
+        button {
+            height: 40px;
+            width: 30%;
+            border-radius: 10px;
+            border: none;
+            color: white;
+            font-weight: bold;
+            background-color: rgb(8, 12, 50);
+        }
+
+        .screen2 {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition-duration: 0.5s;
+            display: none;
+        }
+
+        p {
+            font-size: 18px;
+            width: 95%;
+            margin: 10px;
+            margin-top: -8px;
+        }
+
+        .bold {
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        h2 {
+            text-align: center;
+            padding: 5px;
+            margin: 0px 10px;
+            border-bottom: solid 3px black;
+            width: 95%;
+        }
+
+        .resultBtns {
+            margin-top: 5px;
+        }
+
+        .totalGross {
+            text-align: center;
+            border-top: solid 3px black;
+            color: white;
+            background-color: rgb(8, 12, 50);
+            padding-bottom: 10px;
+            border-radius: 15px;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 0;
+            background-color: rgb(3, 20, 35);
+            width: 100%;
+            text-align: center;
+            color: white;
+        }
+    </style>
 </head>
 
 <body>
+    <h1>Theater Gross Calculator</h1>
+    <div class="screen1">
 
-    <div class="header">
-        <h1>RT Smart Tools</h1>
-        <i></i>
-    </div>
+        <label for="theaterName">Theater Name</label>
+        <input type="text" placeholder="Theater Name" class="longInput" list="theatersList"
+            onchange="sectionManipulate()" id="theaterName">
 
-    <div class="content">
-
-        <h2>TOOLS</h2>
-        <ul class="OptionsList">
-            <!-- <li><a href="/resume.html" target="_blank">Resume Building</a></li> -->
-            <li><a href="https://itsram175.github.io/RT-Smart-Tools/photoPrint.html" target="_blank">Photo Printing</a></li>
-            <li><a href="/photoModify.html" target="_blank">Add Sign/Date to Photos</a></li>
-        </ul>
-
-        <h2>QUICK LINKS</h2>
-        <div class="quickLinks">
-            <ul>
-                <li><a href="https://voters.eci.gov.in/" target="_blank">Voter ID</a></li>
-                <li><a href="https://www.onlineservices.nsdl.com/paam/endUserRegisterContact.html" target="_blank">Pan
-                        Card</a></li>
-                <li><a href="https://myaadhaar.uidai.gov.in/" target="_blank">e-Aadhaar</a></li>
-                <li><a href="https://healthid.ndhm.gov.in/" target="_blank">ABHA</a></li>
-            </ul>
-            <ul>
-                <li><a href="https://ecet.tsche.ac.in/" target="_blank">TS ECET</a></li>
-                <li><a href="https://icet.tsche.ac.in/" target="_blank">TS ICET</a></li>
-                <li><a href="https://eamcet.tsche.ac.in/" target="_blank">TS EAMCET</a></li>
-                <li><a href="https://polycet.sbtet.telangana.gov.in/#!/index" target="_blank">TS POLYCET</a></li>
-            </ul>
-            <ul>
-                <li><a href="https://tsecet.nic.in/default.aspx" target="_blank">ECET NIC</a></li>
-                <li><a href="https://tsicet.nic.in/default.aspx" target="_blank">ICET NIC</a></li>
-                <li><a href="https://tseamcet.nic.in/default.aspx" target="_blank">EAMCET NIC</a></li>
-                <li><a href="https://tspolycet.nic.in/default.aspx" target="_blank">POLYCET NIC</a></li>
-            </ul>
-            <ul>
-                <li><a href="https://mail.google.com/" target="_blank">Gmail</a></li>
-                <li><a href="https://www.google.com/" target="_blank">Google</a></li>
-                <li><a href="https://login.yahoo.com/?.src=ym&pspid=159600001&activity=mail-direct&.lang=en-GB&.intl=gb&.done=https%3A%2F%2Fmail.yahoo.com%2Fd"
-                        target="_blank">Yahoo Mail</a></li>
-                <li><a href="https://web.whatsapp.com/" target="_blank">Whatsapp Web</a></li>
-            </ul>
-            <ul>
-                <li><a href="https://epds.telangana.gov.in/FoodSecurityAct/?wicket:bookmarkablePage=:nic.fsc.foodsecurity.FscSearch"
-                        target="_blank">FSC</a></li>
-                <li><a href="https://telanganaepass.cgg.gov.in/" target="_blank">E-PASS</a></li>
-                <li><a href="https://online.tsrtcpass.in/" target="_blank">BUS PASS</a></li>
-                <li><a href="https://ts.meeseva.telangana.gov.in/meeseva/home.htm" target="_blank">MEE SEVA</a></li>
-            </ul>
-            <ul>
-                <li><a href="https://ssc.nic.in/" target="_blank">SSC</a></li>
-                <li><a href="https://indianrailways.gov.in/railwayboard/view_section.jsp?lang=0&id=0,7,1281"
-                        target="_blank">RRB</a></li>
-                <li><a href="https://www.tspsc.gov.in/" target="_blank">TSPSC</a></li>
-                <li><a href="https://www.tslprb.in/" target="_blank">TSPRLB</a></li>
-            </ul>
+        <label id="sectionName1" for="priceInputS1">Upper Balcony</label>
+        <div class="MultiInputs" id="section1">
+            <input type="number" placeholder="Price" id="priceInputS1">
+            <input type="number" placeholder="Tickets Sold" id="ticketSoldInput1">
+            <button id="full-btnS1" onclick="setFullS1()">Full</button>
         </div>
 
+        <label id="sectionName2" for="priceInputS2">Lower Balcony</label>
+        <div class="MultiInputs" id="section2">
+            <input type="number" placeholder="Price" id="priceInputS2">
+            <input type="number" placeholder="Tickets Sold" id="ticketSoldInput2">
+            <button id="full-btnS2" onclick="setFullS2()">Full</button>
+        </div>
+
+        <label id="sectionName3" for="priceInputS3">First Class</label>
+        <div class="MultiInputs" id="section3">
+            <input type="number" placeholder="Price" id="priceInputS3">
+            <input type="number" placeholder="Tickets Sold" id="ticketSoldInput3">
+            <button id="full-btnS3" onclick="setFullS3()">Full</button>
+        </div>
+
+        <label id="sectionName4" for="priceInputS4">Second Class</label>
+        <div class="MultiInputs" id="section4">
+            <input type="number" placeholder="Price" id="priceInputS4">
+            <input type="number" placeholder="Tickets Sold" id="ticketSoldInput4">
+            <button id="full-btnS4" onclick="setFullS4()">Full</button>
+        </div>
+
+        <button onclick="calculateGross()" class="resultBtns">Calculate</button>
+
+        <datalist id="theatersList">
+            <option>Aaradhana 70MM - Tarnaka</option>
+            <option>Asian Muktha A2 Konark - Dilshuknagar</option>
+            <option>Asian Tarakrama cineplex - kacheguda</option>
+            <option>Brahmaramba 70MM - Kukatpally</option>
+            <option>Devi 70MM 4K Laser & Dolby Atmos - RTC X Roads</option>
+            <option>Gokul 70MM DTS - Erragadda</option>
+            <option>Kumar 70MM - kacheguda</option>
+            <option>Sri Sai Ram 70MM 4K Dolby Atmos - Malkajgiri</option>
+        </datalist>
+
     </div>
 
-    <footer>Designed and Developed by RT Web & App Developers</footer>
-    <script src="script.js"></script>
+    <div class="screen2">
+        <h2 id="opTheaterName">Sri Sai Ram 70MM 4K Dolby Atmos - Malkajgiri</h2>
+        <p class="bold" id="opSectionName1">Upper Balcony</p>
+        <p id="sectionCalculation1">150 x 100 = 15000</p>
+        <p class="bold" id="opSectionName2">Lower Balcony</p>
+        <p id="sectionCalculation2">150 x 100 = 15000</p>
+        <p class="bold" id="opSectionName3">First Class</p>
+        <p id="sectionCalculation3">100 x 100 = 10000</p>
+        <p class="bold" id="opSectionName4">Second Class</p>
+        <p id="sectionCalculation4">50 x 100 = 5000</p>
+        <p class="bold" id="totalTicketsSold">Total Tickets Sold : 400</p>
+        <h2 class="totalGross" id="totalGross">Total Gross : 30,000/-</h2>
+        <button onclick="goBack()" class="resultBtns">Back</button>
+    </div>
+
+    <footer>
+        <h6>Designed and Developed by RT Web & Mobile Apps</h6>
+    </footer>
+
+
+    <script>
+        let screen1 = document.querySelector(".screen1");
+        let screen2 = document.querySelector(".screen2");
+        let theatersList = document.querySelector("#theatersList");
+
+        let theaterName = document.querySelector("#theaterName");
+
+        let sectionName1 = document.querySelector("#sectionName1");
+        let sectionName2 = document.querySelector("#sectionName2");
+        let sectionName3 = document.querySelector("#sectionName3");
+        let sectionName4 = document.querySelector("#sectionName4");
+
+        let priceInputS1 = document.querySelector("#priceInputS1");
+        let priceInputS2 = document.querySelector("#priceInputS2");
+        let priceInputS3 = document.querySelector("#priceInputS3");
+        let priceInputS4 = document.querySelector("#priceInputS4");
+
+        let ticketSoldInput1 = document.querySelector("#ticketSoldInput1");
+        let ticketSoldInput2 = document.querySelector("#ticketSoldInput2");
+        let ticketSoldInput3 = document.querySelector("#ticketSoldInput3");
+        let ticketSoldInput4 = document.querySelector("#ticketSoldInput4");
+
+        let section1 = document.querySelector("#section1");
+        let section2 = document.querySelector("#section2");
+        let section3 = document.querySelector("#section3");
+        let section4 = document.querySelector("#section4");
+
+        let opSectionName1 = document.querySelector("#opSectionName1");
+        let opSectionName2 = document.querySelector("#opSectionName2");
+        let opSectionName3 = document.querySelector("#opSectionName3");
+        let opSectionName4 = document.querySelector("#opSectionName4");
+
+        let sectionCalculation1 = document.querySelector("#sectionCalculation1");
+        let sectionCalculation2 = document.querySelector("#sectionCalculation2");
+        let sectionCalculation3 = document.querySelector("#sectionCalculation3");
+        let sectionCalculation4 = document.querySelector("#sectionCalculation4");
+
+        let totalTicketsSold = document.querySelector("#totalTicketsSold");
+        let totalGross = document.querySelector("#totalGross");
+
+
+        let opTheaterName = document.querySelector("#opTheaterName");
+
+        let theatersListArray = ["Aarti Theater - Sanghi Nagar", "Alankar (Prathap Theater) - Langer House", "Anjali Movie Max - Secunderabad", "Aradhana Theater - Tarnaka", "Arjun 70MM - Kukatpally", "Asian Ganga 4K - Dilshuknagar", "Asian Jyothi - RC Puram", "Asian Lakshmikala Cinepride - Chandrakala - Moosapet", "Asian Lakshmikala Cinepride - Lakshmikala - Moosapet", "Asian Lakshmikala Cinepride - Shashikala - Moosapet", "Asian Mukta A2 Konark - Dilshuknagar", "Asian Mukund Cinema - Medchal", "Asian Sha & Shahensha - Chintal", "Asian Shiva 4K - Dilshuknagar", "Asian Tarakarama Cineplex - Kacheguda", "Bhramaramba 70MM A/C DTS - Kukatpally", "Bhujanga 70MM - Jeedimetla", "BR Hitech 70MM - Madhapur", "Cine Town Indra - Karmanghat", "Cine Town Nagendra - Karmanghat", "Devi 70MM 4K Laser & Dolby Atmos - RTC X Roads", "Ganesh 70MM - Shamshabad", "Gokul 70MM 4K DTS - Erragadda", "Indra Padmavathi Cinema - Kacheguda", "Indra Venkataramana Cinema - Kacheguda", "Kumar theater - Kacheguda", "Lakshmi Kala Mandir - Alwal", "Local Cinemas Yakut Mahal Laser & Dolby", "Mahalakshmi Complex Screen 1 - Kothapeta", "Mahalakshmi Complex Screen 2 - Kothapeta", "Mallikarjuna 70MM A/C DTS - Kukatpally", "Megha Theater - Dilshuknagar", "Metro Cinema - Bahadurpura", "Mukta A2 Cinemas,Laxmi - Shamshabad", "Mukta A2 Cinemas,Ramakrishna - Abids", "Nartaki Theater - Alwal", "Prashanth Cinema - Secunderabad", "Priya Theater - Malleypally", "Rajadhani 70MM 2K Dolby 7.1 - Newly Renovated - Dilshuknagar", "Rajadhani Deluxe 2K Dolby 7.1 - Dilshuknagar", "Rama Krishna 70MM - Abids", "Ranga Theater 70MM - Jeedimetla", "Sai Ranga 4K - Miyapur", "Sampurna 70MM 2K Dolby Digital - Vanasthalipuram", "Sandhya 35MM - RTC X Roads", "Sandhya 70MM 4K Dolby Atmos - RTC X Roads", "Sangeetha Theater - RC Puram", "Santhosh Theater - Ibrahimpatnam", "Sapthagiri 70MM 4K & Dolby Digital - RTC X Roads", "Shanthi Theater - Narayanaguda", "Shetty Cinema Mini Theater - Narapally", "Sree Ramulu 70MM 4K Laser - Moosapet", "Sree Sai Puja - Suraram", "Sree Sai Raja Theater - Musheerabad", "Sri Krishna 70MM - Uppal", "Sri Prema 70MM - Tukkuguda", "Sri Ramana 70MM 4K - Amberpet", "Sri Ramana Gold 4K Dolby 7.1 - Amberpet", "Sri Sai Ram 70MM A/C 4K Dolby Atmos - Malkajgiri", "Sudarshan 35MM 4K Laser & Dolby Atmos - RTC X Roads", "Super Cinema - Balapur", "Sushma 2K Dolby Digital Cinema - Vanasthalipuram", "SV Cinesquare - Patancheru", "SVC Eeshwar - Attapur", "SVC Shiva Sakthi Theater - Kapra", "SVC Sri Lakshmi Theater - Karmanghat", "Talluri Theaters (Chitra) - Kushaiguda", "Talluri Theaters (Geetha) - Kushaiguda", "Talluri Theaters (Raaga) - Kushaiguda", "Vijetha 70MM 4K Atmos - Borabanda", "Vimal 70MM - Balanagar", "Vishwanath 70MM Theater - Kukatpally", "VLS Sridevi 2K A/C DTS - Chilkalguda", "Vyjayanthi Cinema A/C 2K - Nacharam", "Yadagiri Theater - Santosh Nagar"]
+
+        let theaterSectionsList = ["none%Balcony%First Class%Second Class", "none%Balcony%Balcony%Second Class", "Balcony%Lower Balcony%First Class%Third Class", "none%Balcony%First Class%Second Class", "Box%Balcony%Dress Circle%Second Class", "Box%Balcony%First Class%Silver", "Balcony%Family Circle%First Class%Second Class", "Couple Seats%Platinum%Gold%Silver", "none%Platinum%Gold%Silver", "none%Platinum%Gold%Silver", "Recliners + Loungers%Balcony%Dress Circle%Lower Class", "Recliners%Gold%Lounger%Silver", "none%Box A + Box B%Gold%Silver", "Box%Balcony%First Class%Silver", "Box%Recliners%Balcony Sofa%Lower Class", "Box%Maharaja Circle%Dress Circle%First Class", "Balcony%Box%First Class%Second Class", "Box%Reserved Class%Second Class%Third Class", "Upper Balcony%Family Circle%Lower Balcony%Lower Class", "Upper Balcony%Family Circle%Lower Balcony%Lower Class", "Upper Balcony%Lower Balcony%First Class%Second Class", "none%Gold%Silver%Bronze", "Upper Balcony%Lower Balcony%First Class%Second Class", "none%Premium%Prime%Economy", "Premium%Elite Recliners%Elite Sofa%Economy", "none%Balcony%Dress Circle%Lower Class", "Balcony%Sofa Class%Reserved Class%Second Class", "none%Balcony%Dress Circle%none", "Box%Balcony%First Class%Second Class", "none%Balcony%First Class%Second Class", "Box%Maharaja Circle%Dress Circle%none", "none%Balcony%Dress Circle%Lower Class", "none%Balcony%Silver%Bronze", "none%Elite Recliners%Elite Sofa%Economy", "Gold%Premium Recliners%Premium Sofa%Silver", "none%Balcony%Reserved Class%none", "none%Premium%Royal%Lower Class", "none%Balcony Upper%Maharaja Lower%Second Front Class", "Platinum%Diamond + Diamond + Diamond Box%Gold%Silver", "none%Executive Class%Economy Class%Lower Class", "Balcony 2%Balcony 1%Dress Circle%Lower Class", "none%Balcony%First Class%Second Class", "Upper Balcony%Lower Balcony%Dress Circle%Lower Class", "Balcony%Dress Circle%First Class%Lower Class", "none%Balcony%Front Circle%Third Class", "Box A + Box B%Lower Balcony + Upper Balcony%First Class%Third Class", "none%Platinum%Gold%Silver", "Box%Balcony%First Class%Lower Class", "none%Balcony%First Class%none", "Upper Balcony%Lower Balcony%Second Class%Third Class", "none%First Class%Second Class%none", "none%Balcony%First Class%Second Class", "Upper Balcony Maharaja%Lower Balcony Raja%Second Class%Sofa", "none%Balcony%Dress Circle%Third Class", "Upper Balcony%Lower Balcony%Dress Circle%Third Class", "none%Balcony%Dress Circle%Second Class", "none%Balcony%Dress Circle%Second Class", "none%Balcony%Dress Circle%Second Class", "none%Platinum%Gold%Silver", "Upper Balcony%Lower Balcony%First Class%Second Class", "none%Balcony%Raja Circle%Third Class", "none%Balcony%Dress Circle%Third Class", "none%Balcony%First Class%Second Class", "none%Gold%Silver%Bronze", "Upper Balcony%Lower Balcony%First Class%Second Class", "none%Balcony%First Class%Second Class", "none%none%Gold%Silver", "none%none%Gold%Silver", "none%none%Gold%Silver", "Box%Balcony%Dress Circle%none", "none%Diamond Circle%First Class%none", "Box A + Box B%Balcony%First Class%Second Class", "none%Upper Balcony%Lower Balcony%Third Class", "none%Balcony%First Class%Second Class", "Balcony + Box A + Box B%Dress Circle%Reserved Class%Second Class"]
+
+        let sectionCapacity = ["0+303+102+90", "0+48+410+119", "98+212+195+164", "0+460+200+163", "36+365+237+119", "53+537+170+190", "160+360+134+166", "40+338+177+135", "0+718+70+157", "0+612+62+145", "33+527+75+178", "16+519+20+145", "0+29+560+156", "52+455+99+153", "6+24+440+122", "13+488+190+170", "530+20+499+256", "60+321+232+83", "304+26+130+116", "327+28+140+124", "455+462+140+263", "0+174+493+74", "340+262+174+205", "0+120+204+98", "286+42+176+126", "0+346+182+120", "295+248+192+96", "0+196+192+0", "16+467+84+106", "0+318+59+20", "13+488+190+0", "0+415+380+194", "0+412+225+144", "0+++", "313+18+212+67", "0+723+97+0", "0+196+416+153", "0+150+336+114", "24+449+212+108", "0+384+120+124", "168+230+326+198", "0+553+511+242", "305+374+168+208", "265+300+125+158", "0+720+109+215", "54+884+120+265", "0+486+52+154", "94+426+93+105", "0+354+414+0", "391+285+88+207", "0+30+70+0", "0+723+211+232", "384+325+176+12", "0+377+338+182", "111+326+316+186", "0+434+228+170", "0+527+220+230", "0+410+245+165", "0+265+316+118", "525+315+124+250", "0+571+211+156", "0+566+256+156", "0+518+200+95", "0+432+226+184", "64+230+26+82", "0+369+156+101", "0+0+79+19", "0+0+288+72", "0+0+555+140", "4+432+182+0", "0+582+183+0", "30+517+385+241", "0+158+472+132", "0+380+142+155", "341+400+119+216"]
+
+        let theaterSections;
+
+        let Section1FULL;
+        let Section2FULL;
+        let Section3FULL;
+        let Section4FULL;
+
+        let section1Gross;
+        let section2Gross;
+        let section3Gross;
+        let section4Gross;
+        let totalTicketsSoldNumber;
+        let totalGrossAmount;
+
+        function calculateGross() {
+            if (theaterName.value == "") {
+                screen1.style.display = "flex";
+                screen2.style.display = "none";
+                alert("Theater Name is Required!");
+            } else {
+                screen1.style.display = "none";
+                screen2.style.display = "flex";
+                opTheaterName.innerHTML = theaterName.value;
+
+                if (priceInputS1.value == "") {
+                    priceInputS1.value = 0;
+                    ticketSoldInput1.value = 0;
+                } else {
+                    priceInputS1.value = priceInputS1.value;
+                    ticketSoldInput1.value = ticketSoldInput1.value;
+                }
+                if (priceInputS2.value == "") {
+                    priceInputS2.value = 0;
+                    ticketSoldInput2.value = 0;
+                } else {
+                    priceInputS2.value = priceInputS2.value;
+                    ticketSoldInput2.value = ticketSoldInput2.value;
+                }
+                if (priceInputS3.value == "") {
+                    priceInputS3.value = 0;
+                    ticketSoldInput3.value = 0;
+                } else {
+                    priceInputS3.value = priceInputS3.value;
+                    ticketSoldInput3.value = ticketSoldInput3.value;
+                }
+                if (priceInputS4.value == "") {
+                    priceInputS4.value = 0;
+                    ticketSoldInput4.value = 0;
+                } else {
+                    priceInputS4.value = priceInputS4.value;
+                    ticketSoldInput4.value = ticketSoldInput4.value;
+                }
+
+                section1Gross = priceInputS1.value * ticketSoldInput1.value;
+                section2Gross = priceInputS2.value * ticketSoldInput2.value;
+                section3Gross = priceInputS3.value * ticketSoldInput3.value;
+                section4Gross = priceInputS4.value * ticketSoldInput4.value;
+
+                totalTicketsSoldNumber = parseInt(ticketSoldInput1.value) + parseInt(ticketSoldInput2.value) + parseInt(ticketSoldInput3.value) + parseInt(ticketSoldInput4.value);
+                totalGrossAmount = section1Gross + section2Gross + section3Gross + section4Gross;
+
+                sectionCalculation1.innerHTML = priceInputS1.value + " * " + ticketSoldInput1.value + " = " + section1Gross;
+                sectionCalculation2.innerHTML = priceInputS2.value + " * " + ticketSoldInput2.value + " = " + section2Gross;
+                sectionCalculation3.innerHTML = priceInputS3.value + " * " + ticketSoldInput3.value + " = " + section3Gross;
+                sectionCalculation4.innerHTML = priceInputS4.value + " * " + ticketSoldInput4.value + " = " + section4Gross;
+
+                totalGrossAmount = totalGrossAmount.toString();
+                totalTicketsSoldNumber = totalTicketsSoldNumber.toString();
+
+                if (totalGrossAmount.length <= 3) {
+                    totalGrossAmount = totalGrossAmount;
+                }
+                else if (totalGrossAmount.length == 4) {
+                    totalGrossAmount = totalGrossAmount[0] + "," + totalGrossAmount[1] + totalGrossAmount[2] + totalGrossAmount[3];
+                }
+                else if (totalGrossAmount.length == 5) {
+                    totalGrossAmount = totalGrossAmount[0] + totalGrossAmount[1] + "," + totalGrossAmount[2] + totalGrossAmount[3] + totalGrossAmount[4];
+                }
+                else if (totalGrossAmount.length == 6) {
+                    totalGrossAmount = totalGrossAmount[0] + "," + totalGrossAmount[1] + totalGrossAmount[2] + "," + totalGrossAmount[3] + totalGrossAmount[4] + totalGrossAmount[5];
+                }
+                else if (totalGrossAmount.length == 7) {
+                    totalGrossAmount = totalGrossAmount[0] + totalGrossAmount[1] + "," + totalGrossAmount[2] + totalGrossAmount[3] + "," + totalGrossAmount[4] + totalGrossAmount[5] + totalGrossAmount[6];
+                }
+
+                if (totalTicketsSoldNumber.length <= 3) {
+                    totalTicketsSoldNumber = totalTicketsSoldNumber;
+                }
+                else if (totalTicketsSoldNumber.length == 4) {
+                    totalTicketsSoldNumber = totalTicketsSoldNumber[0] + "," + totalTicketsSoldNumber[1] + totalTicketsSoldNumber[2] + totalTicketsSoldNumber[3];
+                }
+                else if (totalTicketsSoldNumber.length == 5) {
+                    totalTicketsSoldNumber = totalTicketsSoldNumber[0] + totalTicketsSoldNumber[1] + "," + totalTicketsSoldNumber[2] + totalGrossAmount[3] + totalTicketsSoldNumber[4];
+                }
+
+                totalGrossAmount = totalGrossAmount + "/-";
+
+
+                totalTicketsSold.innerHTML = "Total Tickets Sold : " + totalTicketsSoldNumber;
+                totalGross.innerHTML = "Total Gross : " + totalGrossAmount;
+
+                // console.log("Section 1: ", priceInputS1.value, ticketSoldInput1.value);
+                // console.log("Section 2: ", priceInputS2.value, ticketSoldInput2.value);
+                // console.log("Section 3: ", priceInputS3.value, ticketSoldInput3.value);
+                // console.log("Section 4: ", priceInputS4.value, ticketSoldInput4.value);
+
+
+            }
+        }
+
+        function goBack() {
+            screen1.style.display = "flex";
+            screen2.style.display = "none";
+        }
+
+        var string = "";
+        for (i = 0; i < theatersListArray.length; i++) {
+            string = string + "<option>" + theatersListArray[i] + "</option>";
+        }
+        string = string + "<datalist> </datalist>";
+        theatersList.innerHTML = string;
+
+        function sectionManipulate() {
+            let theaterIndex = theatersListArray.indexOf(theaterName.value);
+            theaterSections = theaterSectionsList[theaterIndex].split("%");
+
+            sectionFulls = sectionCapacity[theaterIndex].split("+");
+
+            Section1FULL = sectionFulls[0];
+            Section2FULL = sectionFulls[1];
+            Section3FULL = sectionFulls[2];
+            Section4FULL = sectionFulls[3];
+
+            priceInputS1.value = "";
+            priceInputS2.value = "";
+            priceInputS3.value = "";
+            priceInputS4.value = "";
+
+            ticketSoldInput1.value = "";
+            ticketSoldInput2.value = "";
+            ticketSoldInput3.value = "";
+            ticketSoldInput4.value = "";
+
+            sectionName1.innerHTML = theaterSections[0];
+            sectionName2.innerHTML = theaterSections[1];
+            sectionName3.innerHTML = theaterSections[2];
+            sectionName4.innerHTML = theaterSections[3];
+
+            opSectionName1.innerHTML = theaterSections[0];
+            opSectionName2.innerHTML = theaterSections[1];
+            opSectionName3.innerHTML = theaterSections[2];
+            opSectionName4.innerHTML = theaterSections[3];
+
+
+            if (sectionName1.innerHTML == "none") {
+                section1.style.display = "none";
+                sectionName1.style.display = "none";
+
+                opSectionName1.style.display = "none";
+                sectionCalculation1.style.display = "none";
+            } else {
+                section1.style.display = "flex";
+                sectionName1.style.display = "block";
+
+                opSectionName1.style.display = "block";
+                sectionCalculation1.style.display = "block";
+            }
+
+            if (sectionName2.innerHTML == "none") {
+                section2.style.display = "none";
+                sectionName2.style.display = "none";
+
+                opSectionName2.style.display = "none";
+                sectionCalculation2.style.display = "none";
+            } else {
+                section2.style.display = "flex";
+                sectionName2.style.display = "block";
+
+                opSectionName2.style.display = "block";
+                sectionCalculation2.style.display = "block";
+            }
+
+            if (sectionName3.innerHTML == "none") {
+                section3.style.display = "none";
+                sectionName3.style.display = "none";
+
+                opSectionName3.style.display = "none";
+                sectionCalculation3.style.display = "none";
+            } else {
+                section3.style.display = "flex";
+                sectionName3.style.display = "block";
+
+                opSectionName3.style.display = "block";
+                sectionCalculation3.style.display = "block";
+            }
+
+            if (sectionName4.innerHTML == "none") {
+                section4.style.display = "none";
+                sectionName4.style.display = "none";
+
+                opSectionName4.style.display = "none";
+                sectionCalculation4.style.display = "none";
+            } else {
+                section4.style.display = "flex";
+                sectionName4.style.display = "block";
+
+                opSectionName4.style.display = "block";
+                sectionCalculation4.style.display = "block";
+            }
+
+
+        }
+
+        function setFullS1() {
+            ticketSoldInput1.value = Section1FULL;
+        }
+
+        function setFullS2() {
+            ticketSoldInput2.value = Section2FULL;
+        }
+
+        function setFullS3() {
+            ticketSoldInput3.value = Section3FULL;
+        }
+
+        function setFullS4() {
+            ticketSoldInput4.value = Section4FULL;
+        }
+    </script>
 </body>
 
 </html>
