@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Theater Gross Calculator</title>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"> -->
     <style>
         :root {
             --primaryColor: #3d0e5d;
@@ -55,11 +56,11 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            height: 200px;
+            min-height: fit-content;
+            max-height: 200px;
             width: 80%;
             overflow-x: hidden;
             overflow-y: scroll;
-            /* border: solid 2px black; */
             margin-top: -20px;
             background-color: var(--listColor);
             border-radius: 15px;
@@ -75,6 +76,7 @@
             margin-left: -40px;
             font-weight: bold;
             text-transform: capitalize;
+            cursor: pointer;
         }
 
         #location {
@@ -82,6 +84,50 @@
             margin-top: 5px;
             font-weight: bold;
             text-align: right;
+            cursor: pointer;
+        }
+
+        .locationChanger {
+            position: fixed;
+            width: 95%;
+            top: 50px;
+            background-color: var(--listColor);
+            color: black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 15px;
+            display: none;
+        }
+
+        .locationChanger input {
+            width: 90%;
+            border-radius: 10px;
+            padding: 2px 5px;
+            text-align: left;
+            border-style: none;
+            margin-top: 10px;
+        }
+
+        #locationsUL {
+            list-style-type: none;
+            width: 100%;
+            margin-top: 0px;
+            min-height: fit-content;
+            max-height: 200px;
+            overflow: scroll;
+        }
+
+        #locationsUL li {
+            background-color: var(--listColor);
+            padding: 10px 0px;
+            width: 100%;
+            text-align: center;
+            border-bottom: solid 2px black;
+            margin-left: -20px;
+            font-weight: bold;
+            text-transform: capitalize;
+            cursor: pointer;
         }
 
         #theaterNameLabel {
@@ -135,6 +181,7 @@
             border: none;
             color: white;
             font-weight: bold;
+            cursor: pointer;
             background-color: var(--primaryColor);
         }
 
@@ -197,6 +244,61 @@
             margin-top: -15px;
         }
 
+        .alertBoxContainer {
+            width: 100%;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: absolute;
+            height: 100%;
+            justify-content: center;
+            z-index: 1;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+        }
+        .alertBox{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 90%;
+            border-radius: 15px;
+            height: fit-content;
+            /* border: solid 2px black; */
+            padding: 10px;
+            background-color: white;
+
+        }
+        .alertBox h2{
+            margin: 0px;
+            width: 100%;
+            text-align: center;
+            
+        }
+        .alertBox p{
+            margin-top: 20px;
+            font-size: 16px;
+            text-align: center;
+            color: grey;
+        }
+        .alertButtons{
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .alertButtons button{
+            width: 50%;
+        }
+        #green-btn{
+            background-color: green;
+        }
+        #red-btn{
+            background-color: rgb(203, 23, 23);
+        }
         footer {
             position: fixed;
             bottom: 0;
@@ -207,16 +309,27 @@
         }
     </style>
     <script src="https://kit.fontawesome.com/3c405e6735.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
-
     <div class="screen1">
 
         <div class="inputContainer">
-            <p id="location"><i class="fa-solid fa-location-dot"></i> Hyderabad</p>
+            <p id="location" onclick="openLocationChanger()"><i class="fa-solid fa-location-dot"></i> <span
+                    id="locationName">Hyderabad</span></p>
+            <div class="locationChanger">
+                <input type="text" id="locationInput" placeholder="Search Your City..." oninput="changeLocation()">
+                <ul id="locationsUL">
+                    <li>Hyderabad</li>
+                    <li>Vishakapatnam</li>
+                    <li>Vijayawada</li>
+                    <li>Bangalore</li>
+                    <li>Chennai</li>
+                </ul>
+            </div>
             <label for="theaterName" id="theaterNameLabel">Theater Name</label>
-            <input type="text" placeholder="Search Theater" class="longInput" oninput="theatersSearchFilter(this.value)"
+            <input type="text" placeholder="Search Theater" class="longInput" oninput="theatersSearchFilter()"
                 id="theaterName">
         </div>
 
@@ -225,42 +338,38 @@
             <li>Sri Sai Ram 70MM</li>
             <li>Vyjayanthi 70MM</li>
             <li>Prashanth 70MM</li>
-            <li>Sandhya 70MM</li>
-            <li>Aradhana 70MM</li>
-            <li>Sri Sai Ram 70MM</li>
-            <li>Vyjayanthi 70MM</li>
-            <li>Prashanth 70MM</li>
-            <li>Sandhya 70MM</li>
         </ul>
+
         <div class="sectionsContainer">
             <label id="sectionName1" for="priceInputS1">Upper Balcony</label>
             <div class="MultiInputs" id="section1">
                 <input type="number" placeholder="Price" id="priceInputS1">
-                <input type="number" placeholder="Tickets Left" id="ticketSoldInput1">
-                <button id="full-btnS1" onclick="setFullS1()">All</button>
+                <input type="number" placeholder="Tickets Sold" id="ticketSoldInput1">
+                <button id="full-btnS1" onclick="setFullS1()">Full</button>
             </div>
 
             <label id="sectionName2" for="priceInputS2">Lower Balcony</label>
             <div class="MultiInputs" id="section2">
                 <input type="number" placeholder="Price" id="priceInputS2">
-                <input type="number" placeholder="Tickets Left" id="ticketSoldInput2">
-                <button id="full-btnS2" onclick="setFullS2()">All</button>
+                <input type="number" placeholder="Tickets Sold" id="ticketSoldInput2">
+                <button id="full-btnS2" onclick="setFullS2()">Full</button>
             </div>
 
             <label id="sectionName3" for="priceInputS3">First Class</label>
             <div class="MultiInputs" id="section3">
                 <input type="number" placeholder="Price" id="priceInputS3">
-                <input type="number" placeholder="Tickets Left" id="ticketSoldInput3">
-                <button id="full-btnS3" onclick="setFullS3()">All</button>
+                <input type="number" placeholder="Tickets Sold" id="ticketSoldInput3">
+                <button id="full-btnS3" onclick="setFullS3()">Full</button>
             </div>
 
             <label id="sectionName4" for="priceInputS4">Second Class</label>
             <div class="MultiInputs" id="section4">
                 <input type="number" placeholder="Price" id="priceInputS4">
-                <input type="number" placeholder="Tickets Left" id="ticketSoldInput4">
-                <button id="full-btnS4" onclick="setFullS4()">All</button>
+                <input type="number" placeholder="Tickets Sold" id="ticketSoldInput4">
+                <button id="full-btnS4" onclick="setFullS4()">Full</button>
             </div>
         </div>
+
         <button onclick="calculateGross()" class="resultBtns" style="margin-top: 5px;">Calculate</button>
 
     </div>
@@ -282,6 +391,17 @@
         <button onclick="goBack()" class="resultBtns">Back</button>
     </div>
 
+    <div class="alertBoxContainer">
+        <div class="alertBox">
+            <h2>Sorry !</h2>
+            <p>We are working on your location, Kindly update your app and try again.</p>
+            <div class="alertButtons">
+                <button id="green-btn">Check For Update</button>
+                <button id="red-btn">Close</button>
+            </div>
+        </div>
+    </div>
+
     <footer>
         <h6>Designed and Developed by RT Web & Mobile Apps</h6>
     </footer>
@@ -290,9 +410,15 @@
     <script>
         let screen1 = document.querySelector(".screen1");
         let screen2 = document.querySelector(".screen2");
+        let locationChanger = document.querySelector(".locationChanger");
         let theatersListUL = document.querySelector("#theatersListUL");
+        let locationsUL = document.querySelector("#locationsUL");
+
 
         let theaterName = document.querySelector("#theaterName");
+        let locationInput = document.querySelector("#locationInput");
+        let locationName = document.querySelector("#locationName");
+
 
         let sectionName1 = document.querySelector("#sectionName1");
         let sectionName2 = document.querySelector("#sectionName2");
@@ -330,11 +456,15 @@
 
         let opTheaterName = document.querySelector("#opTheaterName");
 
-        let theatersListArray = ["Aarti Theater - Sanghi Nagar", "Alankar (Prathap Theater) - Langer House", "Anjali Movie Max - Secunderabad", "Aradhana Theater - Tarnaka", "Arjun 70MM - Kukatpally", "Asian Ganga 4K - Dilshuknagar", "Asian Jyothi - RC Puram", "Asian Lakshmikala Cinepride - Chandrakala - Moosapet", "Asian Lakshmikala Cinepride - Lakshmikala - Moosapet", "Asian Lakshmikala Cinepride - Shashikala - Moosapet", "Asian Mukta A2 Konark - Dilshuknagar", "Asian Mukund Cinema - Medchal", "Asian Sha & Shahensha - Chintal", "Asian Shiva 4K - Dilshuknagar", "Asian Tarakarama Cineplex - Kacheguda", "Bhramaramba 70MM A/C DTS - Kukatpally", "Bhujanga 70MM - Jeedimetla", "BR Hitech 70MM - Madhapur", "Cine Town Indra - Karmanghat", "Cine Town Nagendra - Karmanghat", "Devi 70MM 4K Laser & Dolby Atmos - RTC X Roads", "Ganesh 70MM - Shamshabad", "Gokul 70MM 4K DTS - Erragadda", "Indra Padmavathi Cinema - Kacheguda", "Indra Venkataramana Cinema - Kacheguda", "Kumar theater - Kacheguda", "Lakshmi Kala Mandir - Alwal", "Local Cinemas Yakut Mahal Laser & Dolby", "Mahalakshmi Complex Screen 1 - Kothapeta", "Mahalakshmi Complex Screen 2 - Kothapeta", "Mallikarjuna 70MM A/C DTS - Kukatpally", "Megha Theater - Dilshuknagar", "Metro Cinema - Bahadurpura", "Mukta A2 Cinemas,Laxmi - Shamshabad", "Mukta A2 Cinemas,Ramakrishna - Abids", "Nartaki Theater - Alwal", "Prashanth Cinema - Secunderabad", "Priya Theater - Malleypally", "Rajadhani 70MM 2K Dolby 7.1 - Newly Renovated - Dilshuknagar", "Rajadhani Deluxe 2K Dolby 7.1 - Dilshuknagar", "Rama Krishna 70MM - Abids", "Ranga Theater 70MM - Jeedimetla", "Sai Ranga 4K - Miyapur", "Sampurna 70MM 2K Dolby Digital - Vanasthalipuram", "Sandhya 35MM - RTC X Roads", "Sandhya 70MM 4K Dolby Atmos - RTC X Roads", "Sangeetha Theater - RC Puram", "Santhosh Theater - Ibrahimpatnam", "Sapthagiri 70MM 4K & Dolby Digital - RTC X Roads", "Shanthi Theater - Narayanaguda", "Shetty Cinema Mini Theater - Narapally", "Sree Ramulu 70MM 4K Laser - Moosapet", "Sree Sai Puja - Suraram", "Sree Sai Raja Theater - Musheerabad", "Sri Krishna 70MM - Uppal", "Sri Prema 70MM - Tukkuguda", "Sri Ramana 70MM 4K - Amberpet", "Sri Ramana Gold 4K Dolby 7.1 - Amberpet", "Sri Sai Ram 70MM A/C 4K Dolby Atmos - Malkajgiri", "Sudarshan 35MM 4K Laser & Dolby Atmos - RTC X Roads", "Super Cinema - Balapur", "Sushma 2K Dolby Digital Cinema - Vanasthalipuram", "SV Cinesquare - Patancheru", "SVC Eeshwar - Attapur", "SVC Shiva Sakthi Theater - Kapra", "SVC Sri Lakshmi Theater - Karmanghat", "Talluri Theaters (Chitra) - Kushaiguda", "Talluri Theaters (Geetha) - Kushaiguda", "Talluri Theaters (Raaga) - Kushaiguda", "Vijetha 70MM 4K Atmos - Borabanda", "Vimal 70MM - Balanagar", "Vishwanath 70MM Theater - Kukatpally", "VLS Sridevi 2K A/C DTS - Chilkalguda", "Vyjayanthi Cinema A/C 2K - Nacharam", "Yadagiri Theater - Santosh Nagar"]
+        let theatersListArrayHYDSS = ["AARTI THEATER - SANGHI NAGAR", "ALANKAR (PRATHAP THEATER) - LANGER HOUSE", "ANJALI MOVIE MAX - SECUNDERABAD", "ARADHANA THEATER - TARNAKA", "ARJUN 70MM - KUKATPALLY", "ASIAN GANGA 4K - DILSHUKNAGAR", "ASIAN JYOTHI - RC PURAM", "ASIAN CINEPRIDE - CHANDRAKALA - MOOSAPET", "ASIAN CINEPRIDE - LAKSHMIKALA - MOOSAPET", "ASIAN CINEPRIDE - SHASHIKALA - MOOSAPET", "ASIAN MUKTA A2 KONARK - DILSHUKNAGAR", "ASIAN MUKUND CINEMA - MEDCHAL", "ASIAN SHA & SHAHENSHA - CHINTAL", "ASIAN SHIVA 4K - DILSHUKNAGAR", "ASIAN TARAKARAMA CINEPLEX - KACHEGUDA", "BHRAMARAMBA 70MM A/C DTS - KUKATPALLY", "BHUJANGA 70MM - JEEDIMETLA", "BR HITECH 70MM - MADHAPUR", "CINE TOWN INDRA - KARMANGHAT", "CINE TOWN NAGENDRA - KARMANGHAT", "DEVI 70MM 4K LASER & DOLBY ATMOS - RTC X ROADS", "GANESH 70MM - SHAMSHABAD", "GOKUL 70MM 4K DTS - ERRAGADDA", "INDRA PADMAVATHI CINEMA - KACHEGUDA", "INDRA VENKATARAMANA CINEMA - KACHEGUDA", "KUMAR THEATER - KACHEGUDA", "LAKSHMI KALA MANDIR - ALWAL", "LOCAL CINEMAS YAKUT MAHAL LASER & DOLBY", "MAHALAKSHMI COMPLEX SCREEN 1 - KOTHAPETA", "MAHALAKSHMI COMPLEX SCREEN 2 - KOTHAPETA", "MALLIKARJUNA 70MM A/C DTS - KUKATPALLY", "MEGHA THEATER - DILSHUKNAGAR", "METRO CINEMA - BAHADURPURA", "MUKTA A2 CINEMAS,LAXMI - SHAMSHABAD", "MUKTA A2 CINEMAS,RAMAKRISHNA - ABIDS", "NARTAKI THEATER - ALWAL", "PRASHANTH CINEMA - SECUNDERABAD", "PRIYA THEATER - MALLEYPALLY", "RAJADHANI 70MM 2K DOLBY 7.1 - NEWLY RENOVATED - DILSHUKNAGAR", "RAJADHANI DELUXE 2K DOLBY 7.1 - DILSHUKNAGAR", "RAMA KRISHNA 70MM - ABIDS", "RANGA THEATER 70MM - JEEDIMETLA", "SAI RANGA 4K - MIYAPUR", "SAMPURNA 70MM 2K DOLBY DIGITAL - VANASTHALIPURAM", "SANDHYA 35MM - RTC X ROADS", "SANDHYA 70MM 4K DOLBY ATMOS - RTC X ROADS", "SANGEETHA THEATER - RC PURAM", "SANTHOSH THEATER - IBRAHIMPATNAM", "SAPTHAGIRI 70MM 4K & DOLBY DIGITAL - RTC X ROADS", "SHANTHI THEATER - NARAYANAGUDA", "SHETTY CINEMA MINI THEATER - NARAPALLY", "SREE RAMULU 70MM 4K LASER - MOOSAPET", "SREE SAI PUJA - SURARAM", "SREE SAI RAJA THEATER - MUSHEERABAD", "SRI KRISHNA 70MM - UPPAL", "SRI PREMA 70MM - TUKKUGUDA", "SRI RAMANA 70MM 4K - AMBERPET", "SRI RAMANA GOLD 4K DOLBY 7.1 - AMBERPET", "SRI SAI RAM 70MM A/C 4K DOLBY ATMOS - MALKAJGIRI", "SUDARSHAN 35MM 4K LASER & DOLBY ATMOS - RTC X ROADS", "SUPER CINEMA - BALAPUR", "SUSHMA 2K DOLBY DIGITAL CINEMA - VANASTHALIPURAM", "SV CINESQUARE - PATANCHERU", "SVC EESHWAR - ATTAPUR", "SVC SHIVA SAKTHI THEATER - KAPRA", "SVC SRI LAKSHMI THEATER - KARMANGHAT", "TALLURI THEATERS (CHITRA) - KUSHAIGUDA", "TALLURI THEATERS (GEETHA) - KUSHAIGUDA", "TALLURI THEATERS (RAAGA) - KUSHAIGUDA", "VIJETHA 70MM 4K ATMOS - BORABANDA", "VIMAL 70MM - BALANAGAR", "VISHWANATH 70MM THEATER - KUKATPALLY", "VLS SRIDEVI 2K A/C DTS - CHILKALGUDA", "VYJAYANTHI CINEMA A/C 2K - NACHARAM", "YADAGIRI THEATER - SANTOSH NAGAR"]
 
         let theaterSectionsList = ["none%Balcony%First Class%Second Class", "none%Balcony%Balcony%Second Class", "Balcony%Lower Balcony%First Class%Third Class", "none%Balcony%First Class%Second Class", "Box%Balcony%Dress Circle%Second Class", "Box%Balcony%First Class%Silver", "Balcony%Family Circle%First Class%Second Class", "Couple Seats%Platinum%Gold%Silver", "none%Platinum%Gold%Silver", "none%Platinum%Gold%Silver", "Recliners + Loungers%Balcony%Dress Circle%Lower Class", "Recliners%Gold%Lounger%Silver", "none%Box A + Box B%Gold%Silver", "Box%Balcony%First Class%Silver", "Box%Recliners%Balcony Sofa%Lower Class", "Box%Maharaja Circle%Dress Circle%First Class", "Balcony%Box%First Class%Second Class", "Box%Reserved Class%Second Class%Third Class", "Upper Balcony%Family Circle%Lower Balcony%Lower Class", "Upper Balcony%Family Circle%Lower Balcony%Lower Class", "Upper Balcony%Lower Balcony%First Class%Second Class", "none%Gold%Silver%Bronze", "Upper Balcony%Lower Balcony%First Class%Second Class", "none%Premium%Prime%Economy", "Premium%Elite Recliners%Elite Sofa%Economy", "none%Balcony%Dress Circle%Lower Class", "Balcony%Sofa Class%Reserved Class%Second Class", "none%Balcony%Dress Circle%none", "Box%Balcony%First Class%Second Class", "none%Balcony%First Class%Second Class", "Box%Maharaja Circle%Dress Circle%none", "none%Balcony%Dress Circle%Lower Class", "none%Balcony%Silver%Bronze", "none%Elite Recliners%Elite Sofa%Economy", "Gold%Premium Recliners%Premium Sofa%Silver", "none%Balcony%Reserved Class%none", "none%Premium%Royal%Lower Class", "none%Balcony Upper%Maharaja Lower%Second Front Class", "Platinum%Diamond + Diamond + Diamond Box%Gold%Silver", "none%Executive Class%Economy Class%Lower Class", "Balcony 2%Balcony 1%Dress Circle%Lower Class", "none%Balcony%First Class%Second Class", "Upper Balcony%Lower Balcony%Dress Circle%Lower Class", "Balcony%Dress Circle%First Class%Lower Class", "none%Balcony%Front Circle%Third Class", "Box A + Box B%Lower Balcony + Upper Balcony%First Class%Third Class", "none%Platinum%Gold%Silver", "Box%Balcony%First Class%Lower Class", "none%Balcony%First Class%none", "Upper Balcony%Lower Balcony%Second Class%Third Class", "none%First Class%Second Class%none", "none%Balcony%First Class%Second Class", "Upper Balcony Maharaja%Lower Balcony Raja%Second Class%Sofa", "none%Balcony%Dress Circle%Third Class", "Upper Balcony%Lower Balcony%Dress Circle%Third Class", "none%Balcony%Dress Circle%Second Class", "none%Balcony%Dress Circle%Second Class", "none%Balcony%Dress Circle%Second Class", "none%Platinum%Gold%Silver", "Upper Balcony%Lower Balcony%First Class%Second Class", "none%Balcony%Raja Circle%Third Class", "none%Balcony%Dress Circle%Third Class", "none%Balcony%First Class%Second Class", "none%Gold%Silver%Bronze", "Upper Balcony%Lower Balcony%First Class%Second Class", "none%Balcony%First Class%Second Class", "none%none%Gold%Silver", "none%none%Gold%Silver", "none%none%Gold%Silver", "Box%Balcony%Dress Circle%none", "none%Diamond Circle%First Class%none", "Box A + Box B%Balcony%First Class%Second Class", "none%Upper Balcony%Lower Balcony%Third Class", "none%Balcony%First Class%Second Class", "Balcony + Box A + Box B%Dress Circle%Reserved Class%Second Class"]
 
         let sectionCapacity = ["0+303+102+90", "0+48+410+119", "98+212+195+164", "0+460+200+163", "36+365+237+119", "53+537+170+190", "160+360+134+166", "40+338+177+135", "0+718+70+157", "0+612+62+145", "33+527+75+178", "16+519+20+145", "0+29+560+156", "52+455+99+153", "6+24+440+122", "13+488+190+170", "530+20+499+256", "60+321+232+83", "304+26+130+116", "327+28+140+124", "455+462+140+263", "0+174+493+74", "340+262+174+205", "0+120+204+98", "286+42+176+126", "0+346+182+120", "295+248+192+96", "0+196+192+0", "16+467+84+106", "0+318+59+20", "13+488+190+0", "0+415+380+194", "0+412+225+144", "0+++", "313+18+212+67", "0+723+97+0", "0+196+416+153", "0+150+336+114", "24+449+212+108", "0+384+120+124", "168+230+326+198", "0+553+511+242", "305+374+168+208", "265+300+125+158", "0+720+109+215", "54+884+120+265", "0+486+52+154", "94+426+93+105", "0+354+414+0", "391+285+88+207", "0+30+70+0", "0+723+211+232", "384+325+176+12", "0+377+338+182", "111+326+316+186", "0+434+228+170", "0+527+220+230", "0+410+245+165", "0+265+316+118", "525+315+124+250", "0+571+211+156", "0+566+256+156", "0+518+200+95", "0+432+226+184", "64+230+26+82", "0+369+156+101", "0+0+79+19", "0+0+288+72", "0+0+555+140", "4+432+182+0", "0+582+183+0", "30+517+385+241", "0+158+472+132", "0+380+142+155", "341+400+119+216"]
+
+        let locationsList = ["AMALAPURAM", "AMANGAL", "BHIMAVARAM", "BANGALORE", "CHITTOR", "CHENNAI", "DAVANGERE", "DORNALA", "ERNAKULAM", "HANUMAKONDA", "HYDERABAD", "NELLORE", "KADAPA", "CHIRALA", "NIZAMABAD", "UDAYAGIRI"]
+
+        let theatersListArray = theatersListArrayHYDSS;
 
         let theaterSections;
 
@@ -389,18 +519,18 @@
                     ticketSoldInput4.value = ticketSoldInput4.value;
                 }
 
-                section1Gross = priceInputS1.value * (Section1FULL - ticketSoldInput1.value);
-                section2Gross = priceInputS2.value * (Section2FULL - ticketSoldInput2.value);
-                section3Gross = priceInputS3.value * (Section3FULL - ticketSoldInput3.value);
-                section4Gross = priceInputS4.value * (Section4FULL - ticketSoldInput4.value);
+                section1Gross = priceInputS1.value * ticketSoldInput1.value;
+                section2Gross = priceInputS2.value * ticketSoldInput2.value;
+                section3Gross = priceInputS3.value * ticketSoldInput3.value;
+                section4Gross = priceInputS4.value * ticketSoldInput4.value;
 
-                totalTicketsSoldNumber = parseInt((Section1FULL - ticketSoldInput1.value)) + parseInt(Section2FULL - ticketSoldInput2.value) + parseInt(Section3FULL - ticketSoldInput3.value) + parseInt(Section4FULL - ticketSoldInput4.value);
+                totalTicketsSoldNumber = parseInt(ticketSoldInput1.value) + parseInt(ticketSoldInput2.value) + parseInt(ticketSoldInput3.value) + parseInt(ticketSoldInput4.value);
                 totalGrossAmount = section1Gross + section2Gross + section3Gross + section4Gross;
 
-                sectionCalculation1.innerHTML = priceInputS1.value + " x " + (Section1FULL - ticketSoldInput1.value) + " = " + section1Gross;
-                sectionCalculation2.innerHTML = priceInputS2.value + " x " + (Section2FULL - ticketSoldInput2.value) + " = " + section2Gross;
-                sectionCalculation3.innerHTML = priceInputS3.value + " x " + (Section3FULL - ticketSoldInput3.value) + " = " + section3Gross;
-                sectionCalculation4.innerHTML = priceInputS4.value + " x " + (Section4FULL - ticketSoldInput4.value) + " = " + section4Gross;
+                sectionCalculation1.innerHTML = priceInputS1.value + " x " + ticketSoldInput1.value + " = " + section1Gross;
+                sectionCalculation2.innerHTML = priceInputS2.value + " x " + ticketSoldInput2.value + " = " + section2Gross;
+                sectionCalculation3.innerHTML = priceInputS3.value + " x " + ticketSoldInput3.value + " = " + section3Gross;
+                sectionCalculation4.innerHTML = priceInputS4.value + " x " + ticketSoldInput4.value + " = " + section4Gross;
 
                 totalGrossAmount = totalGrossAmount.toString();
                 totalTicketsSoldNumber = totalTicketsSoldNumber.toString();
@@ -450,6 +580,7 @@
             screen1.style.display = "flex";
             screen2.style.display = "none";
         }
+
 
         function sectionManipulate() {
             let theaterIndex = theatersListArray.indexOf(theaterName.value);
@@ -558,41 +689,63 @@
             ticketSoldInput4.value = Section4FULL;
         }
 
+        function changeLocation() {
+            const filterValue = locationInput.value.toUpperCase();
+            const filteredArray = locationsList.filter(item => item.toUpperCase().includes(filterValue));
+            displayLocationList(filteredArray);
+        }
+
+        function displayLocationList(filteredArray) {
+
+            locationsUL.innerHTML = "";
+
+
+            filteredArray.forEach(item => {
+                const listItem = document.createElement("li");
+                listItem.textContent = item;
+                listItem.setAttribute("onclick", "selectLocation(this.innerHTML)");
+                locationsUL.appendChild(listItem);
+            });
+        }
+
+        function openLocationChanger() {
+            locationInput.value = "";
+            locationChanger.style.display = "flex";
+            changeLocation();
+        }
+
+        function selectLocation(location) {
+            locationName.innerHTML = location;
+            locationChanger.style.display = "none";
+        }
+
         function selectTheater(theater) {
             theaterName.value = theater;
             theatersListUL.style.display = "none";
             sectionManipulate();
         }
 
+        function theatersSearchFilter() {
+            const filterValue = theaterName.value.toUpperCase();
+            const filteredArray = theatersListArray.filter(item => item.toUpperCase().includes(filterValue));
+            displayList(filteredArray);
+        }
 
-        function theatersSearchFilter(input) {
-            let a = [];
+        function displayList(filteredArray) {
 
-            for (let j = 0; j < theatersListArray.length; j++) {
-                if (theatersListArray[j][0].includes(input.toUpperCase())) {
-                    a = a.concat(theatersListArray[j]);
-
-                } else {
-                    a = a;
-                }
-            }
-
-
-            console.log(input)
-
-            theatersListArray = a;
-
-            var string = "";
-            for (let i = 0; i < theatersListArray.length; i++) {
-                string = string + "<li onclick='selectTheater(this.innerHTML)'>" + theatersListArray[i] + "</li>";
-            }
-            string = string + "<ul> </ul>";
-            theatersListUL.innerHTML = string;
             theatersListUL.style.display = "flex";
 
+            theatersListUL.innerHTML = "";
+
+
+            filteredArray.forEach(item => {
+                const listItem = document.createElement("li");
+                listItem.textContent = item;
+                listItem.setAttribute("onclick", "selectTheater(this.innerHTML)");
+                theatersListUL.appendChild(listItem);
+            });
         }
     </script>
 </body>
 
 </html>
-
