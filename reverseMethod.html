@@ -6,6 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Theater Gross Calculator</title>
     <style>
+        :root {
+            --primaryColor: #3d0e5d;
+            --secondaryColor: #ffffff;
+            --listColor: #e5c9fb;
+        }
+
+        * {
+            font-family: Verdana;
+        }
+
         body {
             margin: 0;
             padding: 0;
@@ -13,24 +23,10 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 100%;
-            height: 100%;
+            width: 100vw;
+            height: 100vh;
             overflow: hidden;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: rgb(198, 205, 244);
-        }
-
-        h1 {
-            text-align: center;
-            background-color: rgb(5, 13, 102);
-            margin: 0;
-            padding: 4%;
-            width: 92%;
-            color: white;
-            font-size: 1.5em;
-            overflow: hidden;
-            box-shadow: 0px 1px 10px black;
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            /* background-color: rgb(198, 205, 244); */
         }
 
         .screen1 {
@@ -38,8 +34,74 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: 20px;
             transition-duration: 0.5s;
+        }
+
+        .inputContainer {
+            width: 100%;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            background-color: var(--primaryColor);
+            color: white;
+            height: 130px;
+            justify-content: center;
+            border-bottom-left-radius: 25px;
+            border-bottom-right-radius: 25px;
+        }
+
+        #theatersListUL {
+            list-style-type: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 200px;
+            width: 80%;
+            overflow-x: hidden;
+            overflow-y: scroll;
+            /* border: solid 2px black; */
+            margin-top: -20px;
+            background-color: var(--listColor);
+            border-radius: 15px;
+            display: none;
+        }
+
+        #theatersListUL li {
+            background-color: var(--listColor);
+            padding: 10px 0px;
+            width: 100%;
+            text-align: center;
+            border-bottom: solid 2px black;
+            margin-left: -40px;
+            font-weight: bold;
+            text-transform: capitalize;
+        }
+
+        #location {
+            width: 90%;
+            margin-top: 5px;
+            font-weight: bold;
+            text-align: right;
+        }
+
+        #theaterNameLabel {
+            margin-top: -10px;
+        }
+
+        .sectionsContainer {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .longInput {
+            width: 90%;
+            border-radius: 10px;
+            padding: 2px 5px;
+            text-align: left;
+            border-style: none;
         }
 
         .MultiInputs {
@@ -58,21 +120,12 @@
             width: 28.5%;
             text-align: center;
             margin: 5px 0px;
-            
+
         }
 
         label {
             width: 92%;
             font-weight: bold;
-        }
-
-        .longInput {
-            width: 90%;
-            border-radius: 10px;
-            padding: 2px 5px;
-            border-style: solid;
-            border-color: black;
-            text-align: left;
         }
 
         button {
@@ -82,7 +135,7 @@
             border: none;
             color: white;
             font-weight: bold;
-            background-color: rgb(5, 13, 102);
+            background-color: var(--primaryColor);
         }
 
         .screen2 {
@@ -92,14 +145,14 @@
             align-items: center;
             transition-duration: 0.5s;
             display: none;
-            margin-top: 10px;
         }
 
         p {
             font-size: 18px;
-            width: 95%;
+            width: 90%;
             margin: 10px;
-            margin-top: -8px;
+            margin-top: -10px;
+            /* background-color: aqua; */
         }
 
         .bold {
@@ -107,99 +160,123 @@
             margin-top: 5px;
         }
 
-        h2 {
-            text-align: center;
-            padding: 5px;
-            margin: 0px 10px;
-            border-bottom: solid 3px black;
-            width: 95%;
-        }
-
-        .resultBtns {
-            margin-top: 5px;
-        }
 
         .totalGross {
             text-align: center;
             color: white;
-            background-color: rgb(25, 33, 129);
-            padding-bottom: 10px;
+            background-color: var(--primaryColor);
+            padding: 10px;
+            padding-bottom: 15px;
             border-radius: 15px;
             border: none;
+            width: 90%;
+            margin-top: 0px;
+            margin-bottom: 10px;
+        }
+
+        #opTheaterName {
+            width: 100%;
+            background-color: var(--primaryColor);
+            color: white;
+            height: 130px;
+            justify-content: center;
+            border-bottom-left-radius: 25px;
+            border-bottom-right-radius: 25px;
+            margin-top: 0px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .opSectionContainer {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: -15px;
         }
 
         footer {
-            position: absolute;
+            position: fixed;
             bottom: 0;
-            background-color: rgb(5, 13, 102);
+            background-color: var(--primaryColor);
             width: 100%;
             text-align: center;
             color: white;
         }
     </style>
+    <script src="https://kit.fontawesome.com/3c405e6735.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <h1>Theater Gross Calculator</h1>
+
     <div class="screen1">
 
-        <label for="theaterName">Theater Name</label>
-        <input type="text" placeholder="Theater Name" class="longInput" list="theatersList"
-            onchange="sectionManipulate()" id="theaterName">
-
-        <label id="sectionName1" for="priceInputS1">Upper Balcony</label>
-        <div class="MultiInputs" id="section1">
-            <input type="number" placeholder="Price" id="priceInputS1">
-            <input type="number" placeholder="Tickets Left" id="ticketSoldInput1">
-            <button id="full-btnS1" onclick="setFullS1()">All</button>
+        <div class="inputContainer">
+            <p id="location"><i class="fa-solid fa-location-dot"></i> Hyderabad</p>
+            <label for="theaterName" id="theaterNameLabel">Theater Name</label>
+            <input type="text" placeholder="Search Theater" class="longInput" oninput="theatersSearchFilter(this.value)"
+                id="theaterName">
         </div>
 
-        <label id="sectionName2" for="priceInputS2">Lower Balcony</label>
-        <div class="MultiInputs" id="section2">
-            <input type="number" placeholder="Price" id="priceInputS2">
-            <input type="number" placeholder="Tickets Left" id="ticketSoldInput2">
-            <button id="full-btnS2" onclick="setFullS2()">All</button>
+        <ul id="theatersListUL">
+            <li>Aradhana 70MM</li>
+            <li>Sri Sai Ram 70MM</li>
+            <li>Vyjayanthi 70MM</li>
+            <li>Prashanth 70MM</li>
+            <li>Sandhya 70MM</li>
+            <li>Aradhana 70MM</li>
+            <li>Sri Sai Ram 70MM</li>
+            <li>Vyjayanthi 70MM</li>
+            <li>Prashanth 70MM</li>
+            <li>Sandhya 70MM</li>
+        </ul>
+        <div class="sectionsContainer">
+            <label id="sectionName1" for="priceInputS1">Upper Balcony</label>
+            <div class="MultiInputs" id="section1">
+                <input type="number" placeholder="Price" id="priceInputS1">
+                <input type="number" placeholder="Tickets Left" id="ticketSoldInput1">
+                <button id="full-btnS1" onclick="setFullS1()">All</button>
+            </div>
+
+            <label id="sectionName2" for="priceInputS2">Lower Balcony</label>
+            <div class="MultiInputs" id="section2">
+                <input type="number" placeholder="Price" id="priceInputS2">
+                <input type="number" placeholder="Tickets Left" id="ticketSoldInput2">
+                <button id="full-btnS2" onclick="setFullS2()">All</button>
+            </div>
+
+            <label id="sectionName3" for="priceInputS3">First Class</label>
+            <div class="MultiInputs" id="section3">
+                <input type="number" placeholder="Price" id="priceInputS3">
+                <input type="number" placeholder="Tickets Left" id="ticketSoldInput3">
+                <button id="full-btnS3" onclick="setFullS3()">All</button>
+            </div>
+
+            <label id="sectionName4" for="priceInputS4">Second Class</label>
+            <div class="MultiInputs" id="section4">
+                <input type="number" placeholder="Price" id="priceInputS4">
+                <input type="number" placeholder="Tickets Left" id="ticketSoldInput4">
+                <button id="full-btnS4" onclick="setFullS4()">All</button>
+            </div>
         </div>
-
-        <label id="sectionName3" for="priceInputS3">First Class</label>
-        <div class="MultiInputs" id="section3">
-            <input type="number" placeholder="Price" id="priceInputS3">
-            <input type="number" placeholder="Tickets Left" id="ticketSoldInput3">
-            <button id="full-btnS3" onclick="setFullS3()">All</button>
-        </div>
-
-        <label id="sectionName4" for="priceInputS4">Second Class</label>
-        <div class="MultiInputs" id="section4">
-            <input type="number" placeholder="Price" id="priceInputS4">
-            <input type="number" placeholder="Tickets Left" id="ticketSoldInput4">
-            <button id="full-btnS4" onclick="setFullS4()">All</button>
-        </div>
-
-        <button onclick="calculateGross()" class="resultBtns">Calculate</button>
-
-        <datalist id="theatersList">
-            <option>Aaradhana 70MM - Tarnaka</option>
-            <option>Asian Muktha A2 Konark - Dilshuknagar</option>
-            <option>Asian Tarakrama cineplex - kacheguda</option>
-            <option>Brahmaramba 70MM - Kukatpally</option>
-            <option>Devi 70MM 4K Laser & Dolby Atmos - RTC X Roads</option>
-            <option>Gokul 70MM DTS - Erragadda</option>
-            <option>Kumar 70MM - kacheguda</option>
-            <option>Sri Sai Ram 70MM 4K Dolby Atmos - Malkajgiri</option>
-        </datalist>
+        <button onclick="calculateGross()" class="resultBtns" style="margin-top: 5px;">Calculate</button>
 
     </div>
 
     <div class="screen2">
         <h2 id="opTheaterName">Sri Sai Ram 70MM 4K Dolby Atmos - Malkajgiri</h2>
-        <p class="bold" id="opSectionName1">Upper Balcony</p>
-        <p id="sectionCalculation1">150 x 100 = 15000</p>
-        <p class="bold" id="opSectionName2">Lower Balcony</p>
-        <p id="sectionCalculation2">150 x 100 = 15000</p>
-        <p class="bold" id="opSectionName3">First Class</p>
-        <p id="sectionCalculation3">100 x 100 = 10000</p>
-        <p class="bold" id="opSectionName4">Second Class</p>
-        <p id="sectionCalculation4">50 x 100 = 5000</p>
+        <div class="opSectionContainer">
+            <p class="bold" id="opSectionName1">Upper Balcony</p>
+            <p id="sectionCalculation1">150 x 100 = 15000</p>
+            <p class="bold" id="opSectionName2">Lower Balcony</p>
+            <p id="sectionCalculation2">150 x 100 = 15000</p>
+            <p class="bold" id="opSectionName3">First Class</p>
+            <p id="sectionCalculation3">100 x 100 = 10000</p>
+            <p class="bold" id="opSectionName4">Second Class</p>
+            <p id="sectionCalculation4">50 x 100 = 5000</p>
+        </div>
         <p class="bold" id="totalTicketsSold">Total Tickets Sold : 400</p>
         <h2 class="totalGross" id="totalGross">Total Gross : 30,000/-</h2>
         <button onclick="goBack()" class="resultBtns">Back</button>
@@ -213,7 +290,7 @@
     <script>
         let screen1 = document.querySelector(".screen1");
         let screen2 = document.querySelector(".screen2");
-        let theatersList = document.querySelector("#theatersList");
+        let theatersListUL = document.querySelector("#theatersListUL");
 
         let theaterName = document.querySelector("#theaterName");
 
@@ -374,13 +451,6 @@
             screen2.style.display = "none";
         }
 
-        var string = "";
-        for (i = 0; i < theatersListArray.length; i++) {
-            string = string + "<option>" + theatersListArray[i] + "</option>";
-        }
-        string = string + "<datalist> </datalist>";
-        theatersList.innerHTML = string;
-
         function sectionManipulate() {
             let theaterIndex = theatersListArray.indexOf(theaterName.value);
             theaterSections = theaterSectionsList[theaterIndex].split("%");
@@ -487,7 +557,42 @@
         function setFullS4() {
             ticketSoldInput4.value = Section4FULL;
         }
+
+        function selectTheater(theater) {
+            theaterName.value = theater;
+            theatersListUL.style.display = "none";
+            sectionManipulate();
+        }
+
+
+        function theatersSearchFilter(input) {
+            let a = [];
+
+            for (let j = 0; j < theatersListArray.length; j++) {
+                if (theatersListArray[j][0].includes(input.toUpperCase())) {
+                    a = a.concat(theatersListArray[j]);
+
+                } else {
+                    a = a;
+                }
+            }
+
+
+            console.log(input)
+
+            theatersListArray = a;
+
+            var string = "";
+            for (let i = 0; i < theatersListArray.length; i++) {
+                string = string + "<li onclick='selectTheater(this.innerHTML)'>" + theatersListArray[i] + "</li>";
+            }
+            string = string + "<ul> </ul>";
+            theatersListUL.innerHTML = string;
+            theatersListUL.style.display = "flex";
+
+        }
     </script>
 </body>
 
 </html>
+
