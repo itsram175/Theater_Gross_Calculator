@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TGC | Update</title>
+    <style>
+        :root {
+            --primaryColor: #010127;
+            --secondaryColor: #ffffff;
+            --listColor: #c7c7ff;
+        }
+
+        * {
+            font-family: Verdana;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            overflow-x: hidden;
+            overflow-y: scroll;
+            /* background-color: rgb(198, 205, 244); */
+        }
+
+        .header {
+            width: 100%;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            background-color: var(--primaryColor);
+            color: white;
+            height: 60px;
+            justify-content: center;
+            /* border-bottom-left-radius: 25px;
+            border-bottom-right-radius: 25px; */
+        }
+
+        .updatePageBody {
+            width: 100%;
+            margin: 0px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .updateBox {
+            height: 120px;
+            width: 90%;
+            margin-top: 10px;
+            background-color: var(--listColor);
+            padding: 2%;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .updateBox h4 {
+            width: 100%;
+            text-align: center;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .updateBox p {
+            font-size: 14px;
+        }
+
+        button {
+            padding: 10px;
+            padding-bottom: 12px;
+            width: 50%;
+            border-radius: 10px;
+            border: none;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            background-color: var(--primaryColor);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h2>Updates</h2>
+    </div>
+    <div class="updatePageBody">
+        <div class="updateBox">
+            <h4>Update 1.1 is Available</h4>
+            <p>This Update allows you to access the Theaters of Nellore, Kadapa, Tirupathi and Chittor.</p>
+            <button>Download Now</button>
+        </div>
+    </div>
+</body>
+
+</html>
