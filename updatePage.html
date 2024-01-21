@@ -77,6 +77,15 @@
         .updateBox p {
             font-size: 14px;
         }
+        .noUpdate{
+            justify-content: center;
+        }
+        #updateBox{
+            display: none;
+        }
+        #noUpdate{
+            display: flex;
+        }
 
         button {
             padding: 10px;
@@ -89,6 +98,15 @@
             cursor: pointer;
             background-color: var(--primaryColor);
         }
+        footer {
+            position: fixed;
+            bottom: 0;
+            background-color: var(--primaryColor);
+            width: 100%;
+            text-align: center;
+            color: white;
+            padding: 25px 0px;
+        }
     </style>
 </head>
 
@@ -97,12 +115,22 @@
         <h2>Updates</h2>
     </div>
     <div class="updatePageBody">
-        <div class="updateBox">
+        <div class="updateBox" id="updateBox">
             <h4>Update 1.1 is Available</h4>
             <p>This Update allows you to access the Theaters of Nellore, Kadapa, Tirupathi and Chittor.</p>
             <button>Download Now</button>
         </div>
+
+        <div class="updateBox noUpdate" id="noUpdate">
+            <h4>No Updates Found</h4>
+            <p>Please try again Later</p>
+        </div>
+
+       
     </div>
+    <footer>
+        <h6>Designed and Developed by RT Web & Mobile Apps</h6>
+    </footer>
 </body>
 
 </html>
