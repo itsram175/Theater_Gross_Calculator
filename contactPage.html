@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TCG | Contact Us</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+        :root {
+            --primaryColor: #151A51;
+            --secondaryColor: #ffffff;
+            --listColor: #c7c7ff;
+        }
+
+        * {
+            font-family: 'Poppins';
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: var(--listColor);
+            overflow-x: hidden;
+            overflow-y: scroll;
+        }
+
+        h2 {
+            background-color: var(--primaryColor);
+            width: 100%;
+            color: var(--secondaryColor);
+            text-align: center;
+            padding: 10px 0px;
+        }
+
+        .container {
+            width: 100%;
+            height: fit-content;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container form {
+            width: 90%;
+            height: 100%;
+            padding: 2%;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        label {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        input {
+            height: 40px;
+            width: 100%;
+            border-radius: 10px;
+            padding-left: 10px;
+        }
+
+        textarea {
+            width: 100%;
+            border-radius: 10px;
+            padding-left: 10px;
+            border: 2px solid black;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px 20px;
+            border: none;
+            outline: none;
+            background-color: var(--primaryColor);
+            color: #FFF;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        .alert {
+            width: 90%;
+            background: rgb(0, 255, 106);
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 900;
+            display: none;
+        }
+        footer {
+            position: fixed;
+            bottom: 0;
+            background-color: var(--primaryColor);
+            width: 100%;
+            text-align: center;
+            color: white;
+            padding: 25px 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Contact Us</h2>
+    <div class="container">
+        <form action="" id="contactForm">
+            <div class="alert">Your message sent</div>
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Your name...." />
+            <label for="emailid">Email ID</label>
+            <input type="email" id="emailid" placeholder="Your Email....." />
+            <label for="message">Message</label>
+            <textarea id="msgContent" cols="30" rows="10" placeholder="Type your Message...."></textarea>
+            <div class="inputBox">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+
+        <footer>
+            <h6>Designed and Developed by RT Web & Mobile Apps</h6>
+        </footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-analytics.js";
+
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCO075AilYIFsidHxa0ByIum_7WOTjhzQo",
+            authDomain: "tgc-contactfrom.firebaseapp.com",
+            databaseURL: "https://tgc-contactfrom-default-rtdb.firebaseio.com",
+            projectId: "tgc-contactfrom",
+            storageBucket: "tgc-contactfrom.appspot.com",
+            messagingSenderId: "99585897126",
+            appId: "1:99585897126:web:b36d79b372d25f93f2fa67",
+            measurementId: "G-P5RM3N7Z21"
+        };
+
+        // initialize firebase
+        firebase.initializeApp(firebaseConfig);
+
+        // reference your database
+        var contactFormDB = firebase.database().ref("contactForm");
+
+        document.getElementById("contactForm").addEventListener("submit", submitForm);
+
+        function submitForm(e) {
+            e.preventDefault();
+
+            var name = getElementVal("name");
+            var emailid = getElementVal("emailid");
+            var msgContent = getElementVal("msgContent");
+
+            saveMessages(name, emailid, msgContent);
+
+            //   enable alert
+            document.querySelector(".alert").style.display = "block";
+
+            //   remove the alert
+            setTimeout(() => {
+                document.querySelector(".alert").style.display = "none";
+            }, 3000);
+
+            //   reset the form
+            document.getElementById("contactForm").reset();
+        }
+
+        const saveMessages = (name, emailid, msgContent) => {
+            var newContactForm = contactFormDB.push();
+
+            newContactForm.set({
+                name: name,
+                emailid: emailid,
+                msgContent: msgContent,
+            });
+        };
+
+        const getElementVal = (id) => {
+            return document.getElementById(id).value;
+        };
+    </script>
+</body>
+
+</html>
