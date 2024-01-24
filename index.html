@@ -11,13 +11,13 @@
 
         :root {
             --primaryColor: #151A51;
+            /* --primaryColor: #010127; */
             --secondaryColor: #ffffff;
             --listColor: #c7c7ff;
         }
 
         * {
             font-family: 'Poppins';
-            /* font-family: 'Space Grotesk', sans-serif; */
         }
 
         body {
@@ -279,9 +279,8 @@
             width: 90%;
             border-radius: 15px;
             height: fit-content;
-            /* border: solid 2px black; */
             padding: 10px;
-            background-color: white;
+            background-color: #F8F8FF;
 
         }
 
@@ -289,14 +288,15 @@
             margin: 0px;
             width: 100%;
             text-align: center;
-
+            font-size: 25px;
+            font-weight: bolder;
         }
 
         .alertBox p {
-            margin-top: 20px;
-            font-size: 16px;
+            margin-top: 0px;
+            font-size: 14px;
             text-align: center;
-            color: grey;
+            color: #4F4F4F;
         }
 
         .alertButtons {
@@ -305,7 +305,7 @@
             flex-direction: row;
             justify-content: space-between;
             gap: 10px;
-            margin-top: 20px;
+            margin-top: 0px;
         }
 
         .alertButtons button {
@@ -417,7 +417,7 @@
             <h2 id="alertHead">Sorry !</h2>
             <p id="alertMsg">We are working on your location, Kindly update your app and try again.</p>
             <div class="alertButtons">
-                <button id="green-btn">Check For Update</button>
+                <button id="green-btn" onclick="gotoUpdatePage()">Check For Update</button>
                 <button id="red-btn" onclick="closeAlertBox()">Close</button>
             </div>
         </div>
@@ -519,30 +519,43 @@
 
                 if (priceInputS1.value == "") {
                     priceInputS1.value = 0;
-                    ticketSoldInput1.value = 0;
                 } else {
                     priceInputS1.value = priceInputS1.value;
-                    ticketSoldInput1.value = ticketSoldInput1.value;
                 }
                 if (priceInputS2.value == "") {
                     priceInputS2.value = 0;
-                    ticketSoldInput2.value = 0;
                 } else {
                     priceInputS2.value = priceInputS2.value;
-                    ticketSoldInput2.value = ticketSoldInput2.value;
                 }
                 if (priceInputS3.value == "") {
                     priceInputS3.value = 0;
-                    ticketSoldInput3.value = 0;
                 } else {
                     priceInputS3.value = priceInputS3.value;
-                    ticketSoldInput3.value = ticketSoldInput3.value;
                 }
                 if (priceInputS4.value == "") {
                     priceInputS4.value = 0;
-                    ticketSoldInput4.value = 0;
                 } else {
                     priceInputS4.value = priceInputS4.value;
+                }
+
+                if (ticketSoldInput1.value == "") {
+                    ticketSoldInput1.value = 0;
+                } else {
+                    ticketSoldInput1.value = ticketSoldInput1.value;
+                }
+                if (ticketSoldInput2.value == "") {
+                    ticketSoldInput2.value = 0;
+                } else {
+                    ticketSoldInput2.value = ticketSoldInput2.value;
+                }
+                if (ticketSoldInput3.value == "") {
+                    ticketSoldInput3.value = 0;
+                } else {
+                    ticketSoldInput3.value = ticketSoldInput3.value;
+                }
+                if (ticketSoldInput4.value == "") {
+                    ticketSoldInput4.value = 0;
+                } else {
                     ticketSoldInput4.value = ticketSoldInput4.value;
                 }
 
@@ -554,47 +567,66 @@
                 totalTicketsSoldNumber = parseInt(ticketSoldInput1.value) + parseInt(ticketSoldInput2.value) + parseInt(ticketSoldInput3.value) + parseInt(ticketSoldInput4.value);
                 totalGrossAmount = section1Gross + section2Gross + section3Gross + section4Gross;
 
-                sectionCalculation1.innerHTML = priceInputS1.value + " x " + ticketSoldInput1.value + " = " + section1Gross;
-                sectionCalculation2.innerHTML = priceInputS2.value + " x " + ticketSoldInput2.value + " = " + section2Gross;
-                sectionCalculation3.innerHTML = priceInputS3.value + " x " + ticketSoldInput3.value + " = " + section3Gross;
-                sectionCalculation4.innerHTML = priceInputS4.value + " x " + ticketSoldInput4.value + " = " + section4Gross;
+                section1Gross = formatNumberWithCommas(section1Gross);
+                section2Gross = formatNumberWithCommas(section2Gross);
+                section3Gross = formatNumberWithCommas(section3Gross);
+                section4Gross = formatNumberWithCommas(section4Gross);
 
-                totalGrossAmount = totalGrossAmount.toString();
-                totalTicketsSoldNumber = totalTicketsSoldNumber.toString();
+                sectionCalculation1.innerHTML = priceInputS1.value + " x " + ticketSoldInput1.value + " = " + section1Gross + "/-";
+                sectionCalculation2.innerHTML = priceInputS2.value + " x " + ticketSoldInput2.value + " = " + section2Gross + "/-";
+                sectionCalculation3.innerHTML = priceInputS3.value + " x " + ticketSoldInput3.value + " = " + section3Gross + "/-";
+                sectionCalculation4.innerHTML = priceInputS4.value + " x " + ticketSoldInput4.value + " = " + section4Gross + "/-";
 
-                if (totalGrossAmount.length <= 3) {
-                    totalGrossAmount = totalGrossAmount;
-                }
-                else if (totalGrossAmount.length == 4) {
-                    totalGrossAmount = totalGrossAmount[0] + "," + totalGrossAmount[1] + totalGrossAmount[2] + totalGrossAmount[3];
-                }
-                else if (totalGrossAmount.length == 5) {
-                    totalGrossAmount = totalGrossAmount[0] + totalGrossAmount[1] + "," + totalGrossAmount[2] + totalGrossAmount[3] + totalGrossAmount[4];
-                }
-                else if (totalGrossAmount.length == 6) {
-                    totalGrossAmount = totalGrossAmount[0] + "," + totalGrossAmount[1] + totalGrossAmount[2] + "," + totalGrossAmount[3] + totalGrossAmount[4] + totalGrossAmount[5];
-                }
-                else if (totalGrossAmount.length == 7) {
-                    totalGrossAmount = totalGrossAmount[0] + totalGrossAmount[1] + "," + totalGrossAmount[2] + totalGrossAmount[3] + "," + totalGrossAmount[4] + totalGrossAmount[5] + totalGrossAmount[6];
-                }
 
-                if (totalTicketsSoldNumber.length <= 3) {
-                    totalTicketsSoldNumber = totalTicketsSoldNumber;
-                }
-                else if (totalTicketsSoldNumber.length == 4) {
-                    totalTicketsSoldNumber = totalTicketsSoldNumber[0] + "," + totalTicketsSoldNumber[1] + totalTicketsSoldNumber[2] + totalTicketsSoldNumber[3];
-                }
-                else if (totalTicketsSoldNumber.length == 5) {
-                    totalTicketsSoldNumber = totalTicketsSoldNumber[0] + totalTicketsSoldNumber[1] + "," + totalTicketsSoldNumber[2] + totalGrossAmount[3] + totalTicketsSoldNumber[4];
-                }
+                totalGrossAmount = formatNumberWithCommas(totalGrossAmount);
 
                 totalGrossAmount = totalGrossAmount + "/-";
+
+                totalTicketsSoldNumber = formatNumberWithCommas(totalTicketsSoldNumber);
 
 
                 totalTicketsSold.innerHTML = "Total Tickets Sold : " + totalTicketsSoldNumber;
                 totalGross.innerHTML = "Total Gross : " + totalGrossAmount;
 
             }
+        }
+
+        function formatNumberWithCommas(number) {
+            // Convert the number to a string
+            var numberString = number.toString();
+
+            // Split the string into integer and decimal parts (if any)
+            var parts = numberString.split('.');
+            var integerPart = parts[0];
+            var decimalPart = parts.length > 1 ? '.' + parts[1] : '';
+
+            // Add commas to the integer part
+            var formattedInteger;
+            var formattedNumber;
+
+            if (integerPart.length <= 3) {
+                formattedInteger = integerPart;
+            } else if (integerPart.length == 4) {
+                formattedInteger = integerPart[0] + "," + integerPart[1] + integerPart[2] + integerPart[3];
+            } else if (integerPart.length == 5) {
+                formattedInteger = integerPart[0] + integerPart[1] + "," + integerPart[2] + integerPart[3] + integerPart[4];
+            } else if (integerPart.length == 6) {
+                formattedInteger = integerPart[0] + "," + integerPart[1] + integerPart[2] + "," + integerPart[3] + integerPart[4] + integerPart[5];
+            } else if (integerPart.length == 7) {
+                formattedInteger = integerPart[0] + integerPart[1] + "," + integerPart[2] + integerPart[3] + "," + integerPart[4] + integerPart[5] + integerPart[6];
+            } else if (integerPart.length == 8) {
+                formattedInteger = integerPart[0] + "," + integerPart[1] + integerPart[2] + "," + integerPart[3] + integerPart[4] + "," + integerPart[5] + integerPart[6] + integerPart[7];
+            } else if (integerPart.length == 9) {
+                formattedInteger = integerPart[0] + integerPart[1] + "," + integerPart[2] + integerPart[3] + "," + integerPart[4] + integerPart[5] + "," + integerPart[6] + integerPart[7] + integerPart[8];
+            } else if (integerPart.length == 10) {
+                formattedInteger = integerPart[0] + "," + integerPart[1] + integerPart[2] + "," + integerPart[3] + integerPart[4] + "," + integerPart[5] + integerPart[6] + "," + integerPart[7] + integerPart[8] + integerPart[9];
+            }
+
+            // Concatenate the formatted integer and the decimal part
+
+            formattedNumber = formattedInteger + decimalPart;
+
+            return formattedNumber;
         }
 
         function goBack() {
@@ -730,6 +762,8 @@
                 listItem.setAttribute("onclick", "selectLocation(this.innerHTML)");
                 locationsUL.appendChild(listItem);
             });
+
+
         }
 
         function openLocationChanger() {
@@ -740,12 +774,10 @@
 
         function selectLocation(location) {
 
-            if (location == "AMALAPURAM") {
-                setTheaterListArrays(amalapuramTL, amalapuramTSL, amalapuramTSC, location);
-            } else if (location == "HYDERABAD") {
+            if (location == "HYDERABAD") {
                 setTheaterListArrays(hyderabadTL, hyderabadTSL, hyderabadTSC, location);
             } else {
-                openAlertBox("Sorry!", "We are currently working on that location and we will get back to you soon. Kindly Update your app and try again.", "Check for Update", "Close");
+                openAlertBox("OOPS!", "We are currently working on that location and we will get back to you soon. Kindly Update your app and try again.", "Check for Update", "Close");
             }
 
             locationChanger.style.display = "none";
@@ -810,6 +842,12 @@
         function closeAlertBox() {
             alertBoxContainer.style.display = "none";
         }
+
+        function gotoUpdatePage() {
+            window.location.href = "https://itsram175.github.io/Theater_Gross_Calculator/updatePage.html";
+        }
+
+
     </script>
 </body>
 
