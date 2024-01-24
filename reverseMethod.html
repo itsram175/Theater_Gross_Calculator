@@ -11,7 +11,6 @@
 
         :root {
             --primaryColor: #151A51;
-            /* --primaryColor: #010127; */
             --secondaryColor: #ffffff;
             --listColor: #c7c7ff;
         }
@@ -279,6 +278,7 @@
             width: 90%;
             border-radius: 15px;
             height: fit-content;
+            /* border: solid 2px black; */
             padding: 10px;
             background-color: #F8F8FF;
 
@@ -365,29 +365,29 @@
             <label id="sectionName1" for="priceInputS1">Upper Balcony</label>
             <div class="MultiInputs" id="section1">
                 <input type="number" placeholder="Price" id="priceInputS1">
-                <input type="number" placeholder="Tickets Sold" id="ticketSoldInput1">
-                <button id="full-btnS1" onclick="setFullS1()">Full</button>
+                <input type="number" placeholder="Tickets Left" id="ticketSoldInput1">
+                <button id="full-btnS1" onclick="setFullS1()">All</button>
             </div>
 
             <label id="sectionName2" for="priceInputS2">Lower Balcony</label>
             <div class="MultiInputs" id="section2">
                 <input type="number" placeholder="Price" id="priceInputS2">
-                <input type="number" placeholder="Tickets Sold" id="ticketSoldInput2">
-                <button id="full-btnS2" onclick="setFullS2()">Full</button>
+                <input type="number" placeholder="Tickets Left" id="ticketSoldInput2">
+                <button id="full-btnS2" onclick="setFullS2()">All</button>
             </div>
 
             <label id="sectionName3" for="priceInputS3">First Class</label>
             <div class="MultiInputs" id="section3">
                 <input type="number" placeholder="Price" id="priceInputS3">
-                <input type="number" placeholder="Tickets Sold" id="ticketSoldInput3">
-                <button id="full-btnS3" onclick="setFullS3()">Full</button>
+                <input type="number" placeholder="Tickets Left" id="ticketSoldInput3">
+                <button id="full-btnS3" onclick="setFullS3()">All</button>
             </div>
 
             <label id="sectionName4" for="priceInputS4">Second Class</label>
             <div class="MultiInputs" id="section4">
                 <input type="number" placeholder="Price" id="priceInputS4">
-                <input type="number" placeholder="Tickets Sold" id="ticketSoldInput4">
-                <button id="full-btnS4" onclick="setFullS4()">Full</button>
+                <input type="number" placeholder="Tickets Left" id="ticketSoldInput4">
+                <button id="full-btnS4" onclick="setFullS4()">All</button>
             </div>
         </div>
 
@@ -559,12 +559,13 @@
                     ticketSoldInput4.value = ticketSoldInput4.value;
                 }
 
-                section1Gross = priceInputS1.value * ticketSoldInput1.value;
-                section2Gross = priceInputS2.value * ticketSoldInput2.value;
-                section3Gross = priceInputS3.value * ticketSoldInput3.value;
-                section4Gross = priceInputS4.value * ticketSoldInput4.value;
 
-                totalTicketsSoldNumber = parseInt(ticketSoldInput1.value) + parseInt(ticketSoldInput2.value) + parseInt(ticketSoldInput3.value) + parseInt(ticketSoldInput4.value);
+                section1Gross = priceInputS1.value * (Section1FULL - ticketSoldInput1.value);
+                section2Gross = priceInputS2.value * (Section2FULL - ticketSoldInput2.value);
+                section3Gross = priceInputS3.value * (Section3FULL - ticketSoldInput3.value);
+                section4Gross = priceInputS4.value * (Section4FULL - ticketSoldInput4.value);
+
+                totalTicketsSoldNumber = parseInt((Section1FULL - ticketSoldInput1.value)) + parseInt(Section2FULL - ticketSoldInput2.value) + parseInt(Section3FULL - ticketSoldInput3.value) + parseInt(Section4FULL - ticketSoldInput4.value);
                 totalGrossAmount = section1Gross + section2Gross + section3Gross + section4Gross;
 
                 section1Gross = formatNumberWithCommas(section1Gross);
@@ -572,10 +573,10 @@
                 section3Gross = formatNumberWithCommas(section3Gross);
                 section4Gross = formatNumberWithCommas(section4Gross);
 
-                sectionCalculation1.innerHTML = priceInputS1.value + " x " + ticketSoldInput1.value + " = " + section1Gross + "/-";
-                sectionCalculation2.innerHTML = priceInputS2.value + " x " + ticketSoldInput2.value + " = " + section2Gross + "/-";
-                sectionCalculation3.innerHTML = priceInputS3.value + " x " + ticketSoldInput3.value + " = " + section3Gross + "/-";
-                sectionCalculation4.innerHTML = priceInputS4.value + " x " + ticketSoldInput4.value + " = " + section4Gross + "/-";
+                sectionCalculation1.innerHTML = priceInputS1.value + " x " + (Section1FULL - ticketSoldInput1.value) + " = " + section1Gross;
+                sectionCalculation2.innerHTML = priceInputS2.value + " x " + (Section2FULL - ticketSoldInput2.value) + " = " + section2Gross;
+                sectionCalculation3.innerHTML = priceInputS3.value + " x " + (Section3FULL - ticketSoldInput3.value) + " = " + section3Gross;
+                sectionCalculation4.innerHTML = priceInputS4.value + " x " + (Section4FULL - ticketSoldInput4.value) + " = " + section4Gross;
 
 
                 totalGrossAmount = formatNumberWithCommas(totalGrossAmount);
@@ -587,7 +588,6 @@
 
                 totalTicketsSold.innerHTML = "Total Tickets Sold : " + totalTicketsSoldNumber;
                 totalGross.innerHTML = "Total Gross : " + totalGrossAmount;
-
             }
         }
 
@@ -628,6 +628,8 @@
 
             return formattedNumber;
         }
+
+
 
         function goBack() {
             screen1.style.display = "flex";
@@ -762,8 +764,6 @@
                 listItem.setAttribute("onclick", "selectLocation(this.innerHTML)");
                 locationsUL.appendChild(listItem);
             });
-
-
         }
 
         function openLocationChanger() {
@@ -773,7 +773,6 @@
         }
 
         function selectLocation(location) {
-
             if (location == "HYDERABAD") {
                 setTheaterListArrays(hyderabadTL, hyderabadTSL, hyderabadTSC, location);
             } else {
@@ -846,8 +845,6 @@
         function gotoUpdatePage() {
             window.location.href = "https://itsram175.github.io/Theater_Gross_Calculator/updatePage.html";
         }
-
-
     </script>
 </body>
 
