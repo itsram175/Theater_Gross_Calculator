@@ -764,14 +764,19 @@
         }
 
         function openLocationChanger() {
-           openAlertBox("OOPS!","Only Theaters in Hyderabad City are available, More theaters will be added very soon. Keep Updating your app or latest Information","Check For Update","Close");
+            locationInput.value = "";
+            locationChanger.style.display = "flex";
+            changeLocation();
         }
 
         function selectLocation(location) {
             if (location == "HYDERABAD") {
                 setTheaterListArrays(hyderabadTL, hyderabadTSL, hyderabadTSC, location);
-            } else {
-                openAlertBox("OOPS!", "We are currently working on that location and we will get back to you soon. Kindly Update your app and try again.", "Check for Update", "Close");
+            } else if (location == "VISAKHAPATNAM (VIZAG)") {
+                setTheaterListArrays(vizagTL, vizagTSL, vizagTSC, location);
+            }
+            else {
+                openAlertBox("OOPS!", "Only Theaters in Hyderabad and Vizag are available, More theaters will be added very soon. Keep Updating your app or latest Information", "Check For Update", "Close");
             }
 
             locationChanger.style.display = "none";
