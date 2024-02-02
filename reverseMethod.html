@@ -762,11 +762,21 @@
                 locationsUL.appendChild(listItem);
             });
         }
-
+        let olc = 0;
         function openLocationChanger() {
-            locationInput.value = "";
-            locationChanger.style.display = "flex";
-            changeLocation();
+             if (olc == 0) {
+                locationInput.value = "";
+                locationChanger.style.display = "flex";
+                changeLocation();
+                olc = 1;
+            } else if (olc == 1) {
+                locationInput.value = "";
+                locationChanger.style.display = "none";
+                changeLocation();
+                olc = 0;
+            } else {
+                alert(olc);
+            }
         }
 
         function selectLocation(location) {
@@ -789,6 +799,7 @@
             sectionsContainer.style.display = "none";
             calc_btn.style.display = "none";
             theaterName.value = "";
+            olc = 0;
         }
 
         function setTheaterListArrays(theaters, Sections, Capacity, location) {
