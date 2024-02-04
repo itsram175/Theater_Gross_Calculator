@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Theater Gross Calculator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
@@ -39,6 +40,8 @@
             flex-direction: column;
             align-items: center;
             transition-duration: 0.5s;
+
+            /* display: none; */
         }
 
         .inputContainer {
@@ -235,10 +238,10 @@
             width: 96%;
             background-color: var(--primaryColor);
             color: white;
-            height: 130px;
+            height: 100px;
             justify-content: center;
-            border-bottom-left-radius: 25px;
-            border-bottom-right-radius: 25px;
+            /* border-bottom-left-radius: 25px;
+            border-bottom-right-radius: 25px; */
             margin-top: 0px;
             display: flex;
             align-items: center;
@@ -319,6 +322,230 @@
             background-color: rgb(203, 23, 23);
         }
 
+        .screen3 {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* background-color: #4F4F4F; */
+            height: 85%;
+            overflow: scroll;
+            display: none;
+        }
+
+        .screen3 h2 {
+            background-color: var(--primaryColor);
+            width: 96%;
+            padding: 15px 2%;
+            margin: 0px;
+            color: white;
+            text-align: center;
+        }
+
+        .Screen3Content {
+            width: 100%;
+        }
+
+        .listItemOuter3 {
+            width: 100%;
+            margin: 0px;
+            /* background-color: #4F4F4F; */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 5px;
+        }
+
+        .itemContainer3 {
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px 3%;
+            background-color: var(--listColor);
+            border-radius: 10px;
+            margin-top: -10px;
+            height: 60px;
+            overflow: hidden;
+            transition-duration: 0.5s;
+        }
+
+        .cancelIconContainer {
+            width: 98%;
+            margin: 0px;
+            justify-content: end;
+            display: flex;
+            position: relative;
+        }
+
+        .cancleIcon {
+            background-color: white;
+            text-align: center;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+        }
+
+        .listHeadPart {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            margin: 0px;
+        }
+
+
+        .theaterNameHeading3 {
+            /* background-color: #4F4F4F; */
+            width: 70%;
+            text-align: left;
+            height: 25px;
+            overflow: hidden;
+            height: 20px;
+            font-size: 18px;
+            margin: 0px;
+        }
+
+        .theaterGross3 {
+            /* background-color: #F8F8FF; */
+            width: 30%;
+            text-align: right;
+            height: 25px;
+            overflow: hidden;
+            margin: 0px;
+            font-size: 18px;
+        }
+
+        .middlePartArrow {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin: 0px;
+            margin-top: 5px;
+            justify-content: space-between;
+            /* background-color: #4F4F4F; */
+        }
+
+        .soldTickets3 {
+            font-size: 14px;
+            text-align: left;
+            margin: 0px;
+            margin-top: 5px;
+        }
+
+        .downArrow {
+            margin-top: 5px;
+            text-align: right;
+            margin-right: 5px;
+            transition-duration: 0.5s;
+            width: 18px;
+            height: 18px;
+        }
+
+        .detailedInfo {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            justify-content: space-between;
+            border-top: solid 2px black;
+            margin-top: 5px;
+        }
+
+        .leftPart {
+            width: 55%;
+            text-align: left;
+        }
+
+        .middlePart {
+            width: 40%;
+        }
+
+        .rightPart {
+            width: 25%;
+            text-align: right;
+        }
+
+        .leftPart p,
+        .middlePart p,
+        .rightPart p {
+            width: 100%;
+            margin: 0;
+            margin-top: 5px;
+            font-size: 16px;
+            /* color: red;
+            background-color: #151A51; */
+            height: 23px;
+        }
+
+        .p1 {
+            width: 100%;
+            font-size: 16px;
+            margin: 0px;
+            margin-top: 5px;
+            overflow: hidden;
+        }
+
+        .totalReport {
+            width: 95%;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-evenly;
+            background-color: var(--primaryColor);
+            color: white;
+            margin-top: 5px;
+            display: none;
+
+        }
+
+        .totalReport div h3 {
+            width: 100%;
+            text-align: center;
+            margin-top: 10px;
+            font-size: 20px;
+        }
+
+        .totalReport div p {
+            width: 100%;
+            font-size: 14px;
+            text-align: center;
+            color: gray;
+            margin-top: -20px;
+            /* background-color: #4F4F4F; */
+            margin-left: 0px;
+        }
+
+        .controlButtons {
+            width: 95%;
+            margin-top: 10px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            display: none;
+        }
+
+        .controlButtons button {
+            width: 45%;
+        }
+
+        .neg-btn {
+            background-color: white;
+            color: red;
+            border: solid 2px red;
+        }
+
+        .postive-btn {
+            background-color: white;
+            color: var(--primaryColor);
+            border: solid 2px var(--primaryColor);
+            display: none;
+        }
+
         footer {
             position: fixed;
             bottom: 0;
@@ -326,6 +553,48 @@
             width: 100%;
             text-align: center;
             color: white;
+            /* display: none; */
+        }
+
+        .screen1Buttons {
+            width: 95%;
+            margin-top: 10px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-evenly;
+            margin-bottom: 10px;
+        }
+
+        .screen1Buttons button {
+            width: 40%;
+            margin-top: 5px;
+        }
+
+        .screen2Buttons {
+            margin-top: -10px;
+        }
+
+        .screen2Buttons button {
+            width: 40%;
+        }
+
+        #backBtnS2 {
+            position: absolute;
+            background-color: red;
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            left: 10px;
+            top: 10px;
+        }
+
+        .test {
+            height: 100px;
+            width: 100px;
+            background-color: red;
+            position: absolute;
+            top: 100px;
         }
     </style>
     <script src="https://kit.fontawesome.com/3c405e6735.js" crossorigin="anonymous"></script>
@@ -390,7 +659,10 @@
             </div>
         </div>
 
-        <button onclick="calculateGross()" class="resultBtns" style="margin-top: 5px;" id="calc_btn">Calculate</button>
+        <div class="screen1Buttons">
+            <button class="postive-btn" id="vr_Btn_S1" onclick="viewReport(1)">View Report</button>
+            <button onclick="calculateGross()" class="resultBtns" id="calc_btn">Calculate</button>
+        </div>
 
     </div>
 
@@ -398,17 +670,22 @@
         <h2 id="opTheaterName">Sri Sai Ram 70MM 4K Dolby Atmos - Malkajgiri</h2>
         <div class="opSectionContainer">
             <p class="bold" id="opSectionName1">Upper Balcony</p>
-            <p id="sectionCalculation1">150 x 100 = 15000</p>
+            <p id="sectionCalculation1">150 x 100 = 15000/-</p>
             <p class="bold" id="opSectionName2">Lower Balcony</p>
-            <p id="sectionCalculation2">150 x 100 = 15000</p>
+            <p id="sectionCalculation2">150 x 100 = 15000/-</p>
             <p class="bold" id="opSectionName3">First Class</p>
-            <p id="sectionCalculation3">100 x 100 = 10000</p>
+            <p id="sectionCalculation3">100 x 100 = 10000/-</p>
             <p class="bold" id="opSectionName4">Second Class</p>
-            <p id="sectionCalculation4">50 x 100 = 5000</p>
+            <p id="sectionCalculation4">50 x 100 = 5000/-</p>
         </div>
         <p class="bold" id="totalTicketsSold">Total Tickets Sold : 400</p>
         <h2 class="totalGross" id="totalGross">Total Gross : 30,000/-</h2>
+        <div class="screen1Buttons screen2Buttons">
+            <button onclick="addInfoToList()">Add to Report</button>
+            <button onclick="viewReport(2)">View Report</button>
+        </div>
         <button onclick="goBack()" class="resultBtns">Back</button>
+
     </div>
 
     <div class="alertBoxContainer">
@@ -422,7 +699,101 @@
         </div>
     </div>
 
-    <footer>
+    <div class="screen3">
+        <h2>Total Gross Report</h2>
+        <div class="Screen3Content">
+            <!-- <div class="listItemOuter3">
+                <div class="cancelIconContainer">
+                    <svg fill="#ff0000" height="18px" width="18px" version="1.1" class="cancleIcon"
+                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        viewBox="0 0 300.003 300.003" xml:space="preserve"
+                        onclick="removeTheaterFromList(this.parentNode.parentNode)">
+                        <g>
+                            <g>
+                                <path d="M150,0C67.159,0,0.001,67.159,0.001,150c0,82.838,67.157,150.003,149.997,150.003S300.002,232.838,300.002,150
+            C300.002,67.159,232.839,0,150,0z M206.584,207.171c-5.989,5.984-15.691,5.984-21.675,0l-34.132-34.132l-35.686,35.686
+            c-5.986,5.984-15.689,5.984-21.672,0c-5.989-5.991-5.989-15.691,0-21.68l35.683-35.683L95.878,118.14
+            c-5.984-5.991-5.984-15.691,0-21.678c5.986-5.986,15.691-5.986,21.678,0l33.222,33.222l31.671-31.673
+            c5.986-5.984,15.694-5.986,21.675,0c5.989,5.991,5.989,15.697,0,21.678l-31.668,31.671l34.13,34.132
+            C212.57,191.475,212.573,201.183,206.584,207.171z" />
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+                <div class="itemContainer3">
+
+                    <div class="listHeadPart">
+                        <h3 class="theaterNameHeading3">Aradhana</h3>
+                        <h3 class="theaterGross3">15002/-</h3>
+                    </div>
+
+                    <div class="middlePartArrow">
+                        <p class="soldTickets3">345 Tickets Sold</p>
+                        <svg fill="#000000" height="18px" width="18px" version="1.1" class="downArrow"
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                            viewBox="0 0 512 512" xml:space="preserve" onclick="expandList()">
+                            <g>
+                                <g>
+                                    <g>
+                                        <path d="M256,0C114.618,0,0,114.618,0,256s114.618,256,256,256s256-114.618,256-256S397.382,0,256,0z M256,469.333
+                               c-117.818,0-213.333-95.515-213.333-213.333S138.182,42.667,256,42.667S469.333,138.182,469.333,256S373.818,469.333,256,469.333
+                               z" />
+                                        <path d="M347.582,198.248L256,289.83l-91.582-91.582c-8.331-8.331-21.839-8.331-30.17,0c-8.331,8.331-8.331,21.839,0,30.17
+                               l106.667,106.667c8.331,8.331,21.839,8.331,30.17,0l106.667-106.667c8.331-8.331,8.331-21.839,0-30.17
+                               C369.42,189.917,355.913,189.917,347.582,198.248z" />
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <div class="detailedInfo">
+                        <div class="leftPart">
+                            <p>Upper Balcony</p>
+                            <p>Lower Balcony</p>
+                            <p>First Class</p>
+                            <p>Second Class</p>
+                        </div>
+                        <div class="middlePart">
+                            <p>175 x 200</p>
+                            <p>175 x 150</p>
+                            <p>110 x 56</p>
+                            <p>55 x 120</p>
+                        </div>
+                        <div class="rightPart">
+                            <p>5,17,500/-</p>
+                            <p>17,500/-</p>
+                            <p>5,600/-</p>
+                            <p>4,500/-</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div> -->
+        </div>
+
+    </div>
+    <div class="totalReport">
+        <div class="TR_theatersCount">
+            <h3 id="TR_theatersCountNo">0</h3>
+            <p>Theaters</p>
+        </div>
+        <div class="TR_ticketsCount">
+            <h3 id="TR_ticketsSoldNo">0</h3>
+            <p>Tickets Sold</p>
+        </div>
+        <div class="TR_grossCount">
+            <h3 id="TR_grossCountNo">0</h3>
+            <p>Total Gross</p>
+        </div>
+    </div>
+    <div class="controlButtons">
+        <!-- <button>Clear</button> -->
+        <button onclick="window.print()">Print</button>
+        <button onclick="backtoScreen2_1()">Back</button>
+    </div>
+
+    <footer id="footer">
         <h6>Designed and Developed by RT Web & Mobile Apps</h6>
     </footer>
 
@@ -430,12 +801,15 @@
     <script>
         let screen1 = document.querySelector(".screen1");
         let screen2 = document.querySelector(".screen2");
+        let screen3 = document.querySelector(".screen3");
+        let footer = document.querySelector("#footer");
+
         let locationChanger = document.querySelector(".locationChanger");
         let theatersListUL = document.querySelector("#theatersListUL");
         let locationsUL = document.querySelector("#locationsUL");
         let sectionsContainer = document.querySelector(".sectionsContainer");
         let calc_btn = document.querySelector("#calc_btn");
-
+        let vr_Btn_S1 = document.querySelector("#vr_Btn_S1");
 
         let theaterName = document.querySelector("#theaterName");
         let locationInput = document.querySelector("#locationInput");
@@ -482,6 +856,16 @@
         let green_btn = document.querySelector("#green-btn");
         let red_btn = document.querySelector("#red-btn");
 
+
+        let itemContainer3 = document.querySelector("#itemContainer3");
+
+        let totalReport = document.querySelector(".totalReport");
+        let TR_theatersCountNo = document.querySelector("#TR_theatersCountNo");
+        let TR_ticketsSoldNo = document.querySelector("#TR_ticketsSoldNo");
+        let TR_grossCountNo = document.querySelector("#TR_grossCountNo");
+
+        let controlButtons = document.querySelector(".controlButtons");
+
         let hyderabadTL = theatersListArrayHYDSS.concat(HYD_MPXTL);
         let hyderabadTSL = theaterSectionsListHYDSS.concat(HYD_MPXSL);
         let hyderabadTSC = sectionCapacityHYDSS.concat(HYD_MPXTSC);
@@ -491,6 +875,7 @@
         let sectionCapacity = hyderabadTSC;
 
         let olc = 0;
+        let pos = 1;
 
         let theaterSections;
 
@@ -505,6 +890,23 @@
         let section4Gross;
         let totalTicketsSoldNumber;
         let totalGrossAmount;
+
+        let dr_SUB = []
+        let dr_SUB_OCC = []
+        let dr_SUB_GRS = []
+
+        let totalGrossCount_TR = 0;
+        let totalsoldTickets_TR = 0;
+        let totalTheaters_TR = 0;
+
+        let dr_Classes = []
+        let dr_occupancy = []
+        let dr_Gross = []
+
+        let reportTheaters = []
+        let reportTicketSold = []
+        let reportTheaterGross = []
+
 
         function calculateGross() {
             if (theaterName.value == "") {
@@ -630,6 +1032,13 @@
         function goBack() {
             screen1.style.display = "flex";
             screen2.style.display = "none";
+            if (reportTheaters.length != 0) {
+                vr_Btn_S1.style.display = "block";
+            } else if (reportTheaters.length == 0) {
+                vr_Btn_S1.style.display = "none";
+            } else {
+                alert("Error Occured");
+            }
         }
 
 
@@ -723,7 +1132,13 @@
 
             sectionsContainer.style.display = "flex";
             calc_btn.style.display = "block";
-
+            if (reportTheaters.length == 0) {
+                vr_Btn_S1.style.display = "none";
+            } else if (reportTheaters.length != 0) {
+                vr_Btn_S1.style.display = "block";
+            } else {
+                alert("An Error Occurred")
+            }
 
         }
 
@@ -765,7 +1180,7 @@
         }
 
         function openLocationChanger() {
-           if (olc == 0) {
+            if (olc == 0) {
                 locationInput.value = "";
                 locationChanger.style.display = "flex";
                 changeLocation();
@@ -864,6 +1279,348 @@
         function gotoUpdatePage() {
             window.location.href = "https://itsram175.github.io/Theater_Gross_Calculator/updatePage.html";
         }
+
+        function displayReport(reportTheaters, reportTheaterGross, reportTicketSold) {
+
+            let Screen3Content = document.createElement("div");
+            Screen3Content.classList.add("Screen3Content");
+            Screen3Content.setAttribute("id", "Screen3Content");
+
+            for (let i = 0; i < reportTheaters.length; i++) {
+
+                let listItemOuter3 = document.createElement("div");
+                listItemOuter3.classList.add("listItemOuter3");
+                let cancelIconContainer = document.createElement("div");
+                cancelIconContainer.classList.add("cancelIconContainer");
+                let cancleIcon = document.createElement("img");
+                cancleIcon.setAttribute("src", "/cancel_Icon.png");
+                cancleIcon.classList.add("cancleIcon");
+                cancleIcon.setAttribute("onclick", "removeTheaterFromList(this.parentNode.parentNode)");
+                cancelIconContainer.appendChild(cancleIcon);
+
+                listItemOuter3.appendChild(cancelIconContainer);
+
+                let itemContainer3 = document.createElement("div");
+                itemContainer3.classList.add("itemContainer3");
+                itemContainer3.setAttribute("style", "height:60px;");
+
+                let listHeadPart = document.createElement("div");
+                listHeadPart.classList.add("listHeadPart");
+                let theaterNameHeading3 = document.createElement("h3");
+                theaterNameHeading3.classList.add("theaterNameHeading3");
+                theaterNameHeading3.innerText = reportTheaters[i];
+                let theaterGross3 = document.createElement("h3");
+                theaterGross3.classList.add("theaterGross3");
+                theaterGross3.innerText = reportTheaterGross[i];
+                listHeadPart.appendChild(theaterNameHeading3);
+                listHeadPart.appendChild(theaterGross3);
+
+                let middlePartArrow = document.createElement("div");
+                middlePartArrow.classList.add("middlePartArrow");
+                let soldTickets3 = document.createElement("p");
+                soldTickets3.classList.add("soldTickets3");
+                soldTickets3.innerText = reportTicketSold[i] + " Tickets Sold";
+
+                let downArrow = document.createElement("img");
+                downArrow.setAttribute("src", "/down_Arrow.png");
+                downArrow.classList.add("downArrow");
+                downArrow.setAttribute("id", "downArrow")
+                downArrow.setAttribute("onclick", "expandList(this.parentNode.parentNode)");
+
+                middlePartArrow.appendChild(soldTickets3);
+                middlePartArrow.appendChild(downArrow);
+
+                itemContainer3.appendChild(listHeadPart);
+                itemContainer3.appendChild(middlePartArrow);
+
+                let detailedInfo = document.createElement("div");
+                detailedInfo.classList.add("detailedInfo");
+
+                let leftPart = document.createElement("div");
+                leftPart.classList.add("leftPart");
+                let middlePart = document.createElement("div");
+                middlePart.classList.add("middlePart");
+                let rightPart = document.createElement("div");
+                rightPart.classList.add("rightPart");
+
+                dr_SUB = dr_Classes[i].split("%");
+                dr_SUB_OCC = dr_occupancy[i].split("%");
+                dr_SUB_GRS = dr_Gross[i].split("%");
+
+
+                for (let k = 0; k < dr_SUB.length; k++) {
+
+                    let p1 = document.createElement("p");
+                    p1.classList.add("p1");
+                    p1.innerText = dr_SUB[k];
+                    leftPart.appendChild(p1);
+
+                    let p2 = document.createElement("p");
+                    p2.classList.add("p2");
+                    p2.innerText = dr_SUB_OCC[k];
+                    middlePart.appendChild(p2);
+
+                    let p3 = document.createElement("p");
+                    p3.classList.add("p3");
+                    p3.innerText = dr_SUB_GRS[k];
+                    rightPart.appendChild(p3);
+
+                    if (p1.innerText == "none" && p2.innerText == "0 x 0 " && p3.innerText == " 0/-") {
+                        p1.style.display = "none";
+                        p2.style.display = "none";
+                        p3.style.display = "none";
+                    } else {
+                        p1.style.display = "block";
+                        p2.style.display = "block";
+                        p3.style.display = "block";
+                    }
+                }
+
+
+                detailedInfo.appendChild(leftPart);
+                detailedInfo.appendChild(middlePart);
+                detailedInfo.appendChild(rightPart);
+                itemContainer3.appendChild(detailedInfo);
+                listItemOuter3.appendChild(itemContainer3);
+                Screen3Content.appendChild(listItemOuter3);
+
+            }
+            screen3.appendChild(Screen3Content);
+            calculatorTotalFactors()
+
+        }
+
+
+
+        function expandList(ref) {
+
+
+            // console.log(ref.innerHTML.toString().split("<p>"))
+
+            // console.log(ref.children[2].children[0].children.length);
+
+            // ref.style.height = "200px";
+
+            // console.log(ref.children[1].children[1])
+
+            let detailedInfoLengthREF = ref.children[2].children[0].children;
+            let detailedInfoLength = 0;
+
+            for (let l = 0; l < detailedInfoLengthREF.length; l++) {
+                if (detailedInfoLengthREF[l].innerHTML != "none") {
+                    detailedInfoLength++;
+                } else {
+                    detailedInfoLength = detailedInfoLength;
+                }
+            }
+
+            // console.log(detailedInfoLength);
+
+            if (ref.style.height == "60px") {
+                if (detailedInfoLength == 1) {
+                    ref.style.height = "85px";
+                } else if (detailedInfoLength == 2) {
+                    ref.style.height = "115px";
+                } else if (detailedInfoLength == 3) {
+                    ref.style.height = "145px";
+                } else if (detailedInfoLength == 4) {
+                    ref.style.height = "170px";
+                } else {
+                    alert("Error Occurred");
+                }
+                ref.children[1].children[1].style.transform = "rotate(180deg)";
+            } else if (ref.style.height == "85px" || ref.style.height == "115px" || ref.style.height == "145px" || ref.style.height == "170px") {
+                ref.style.height = "60px";
+                ref.children[1].children[1].style.transform = "rotate(0deg)";
+            }
+
+            // 85 115 145 170 
+
+            // console.log(ref.children[2].children[0].children)
+
+        }
+
+        function removeTheaterFromList(ref) {
+            // console.log(ref.children[1].children[0].children[0].innerHTML);
+            let theaterNameInList = ref.children[1].children[0].children[0].innerHTML;
+            let grossInList = ref.children[1].children[0].children[1].innerHTML;
+            let ticketsInList = ref.children[1].children[1].children[0].innerHTML.split(" ")[0];
+
+            // let section1InListRef = ref.children[1].children[2].children[0].children;
+            let section1InList = sectionsFinder(ref, 0);
+            let section2InList = sectionsFinder(ref, 1);
+            let section3InList = sectionsFinder(ref, 2);
+
+            grossInList = parseInt(grossInList);
+            ticketsInList = parseInt(ticketsInList);
+
+            reportTheaters.splice(reportTheaters.indexOf(theaterNameInList), 1);
+            reportTheaterGross.splice(reportTheaterGross.indexOf(grossInList), 1);
+            reportTicketSold.splice(reportTicketSold.indexOf(ticketsInList), 1);
+
+            // console.log(section1InList)
+            // console.log(dr_Classes[1]);
+            // console.log(section1InList == dr_Classes[1])
+            // console.log(dr_Classes.indexOf(section1InList));
+
+            dr_Classes.splice(dr_Classes.indexOf(section1InList), 1);
+            dr_occupancy.splice(dr_occupancy.indexOf(section2InList), 1);
+            dr_Gross.splice(dr_Gross.indexOf(section3InList), 1);
+
+            // console.log(section1InList);
+            // console.log(dr_Classes[1]);
+            // console.log(dr_Classes.indexOf(section1InList));
+
+
+            let Screen3Content = document.getElementById("Screen3Content");
+            Screen3Content.remove();
+
+            displayReport(reportTheaters, reportTheaterGross, reportTicketSold);
+        }
+
+        function calculatorTotalFactors() {
+            totalTheaters_TR = 0;
+            totalsoldTickets_TR = 0;
+            totalGrossCount_TR = 0;
+            for (let i = 0; i < reportTicketSold.length; i++) {
+                totalsoldTickets_TR += reportTicketSold[i];
+                totalGrossCount_TR += reportTheaterGross[i];
+            }
+            totalTheaters_TR = reportTheaterGross.length;
+
+            let formattedTheaterCount = formatNumberWithCommas(totalTheaters_TR);
+            let formattedTicketsSold = formatNumberWithCommas(totalsoldTickets_TR);
+            let formattedTotalGross = formatNumberWithCommas(totalGrossCount_TR);
+
+            TR_theatersCountNo.innerHTML = formattedTheaterCount;
+            TR_ticketsSoldNo.innerHTML = formattedTicketsSold;
+            TR_grossCountNo.innerHTML = formattedTotalGross;
+        }
+
+        function sectionsFinder(ref, count) {
+            let sectionInListCode;
+            let Sections = ref.children[1].children[2].children[0].children;
+            if (Sections.length == 4) {
+                sectionInListCode = ref.children[1].children[2].children[count].children[0].innerHTML + "%" + ref.children[1].children[2].children[count].children[1].innerHTML + "%" + ref.children[1].children[2].children[count].children[2].innerHTML + "%" + ref.children[1].children[2].children[count].children[3].innerHTML;
+            } else if (Sections.length == 3) {
+                sectionInListCode = ref.children[1].children[2].children[count].children[0].innerHTML + "%" + ref.children[1].children[2].children[count].children[1].innerHTML + "%" + ref.children[1].children[2].children[count].children[2].innerHTML;
+            } else if (Sections.length == 2) {
+                sectionInListCode = ref.children[1].children[2].children[count].children[0].innerHTML + "%" + ref.children[1].children[2].children[count].children[1].innerHTML
+            } else if (Sections.length == 1) {
+                sectionInListCode = ref.children[1].children[2].children[count].children[0].innerHTML
+            } else {
+                alert("Error Occured");
+            }
+
+            return sectionInListCode;
+        }
+
+        function backtoScreen2_1() {
+            screen3.style.display = "none";
+            totalReport.style.display = "none";
+            controlButtons.style.display = "none";
+            footer.style.display = "block";
+            if (pos == 1) {
+                screen1.style.display = "flex";
+                screen2.style.display = "none";
+            } else if (pos == 2) {
+                screen2.style.display = "flex";
+                screen1.style.display = "none";
+            }
+        }
+
+        function addInfoToList() {
+
+            let reference = document.querySelector(".opSectionContainer");
+            let classes;
+            let occupancy;
+            let gross;
+
+            let ticketsSoldPUSH;
+            let totalGrossPUSH;
+
+            // console.log(reference);
+            if (reference.children.length == 8) {
+                classes = opSectionName1.innerHTML + "%" + opSectionName2.innerHTML + "%" + opSectionName3.innerHTML + "%" + opSectionName4.innerHTML;
+
+                occupancy = sectionCalculation1.innerHTML.split("=")[0] + "%" + sectionCalculation2.innerHTML.split("=")[0] + "%" + sectionCalculation3.innerHTML.split("=")[0] + "%" + sectionCalculation4.innerHTML.split("=")[0];
+
+                gross = sectionCalculation1.innerHTML.split("=")[1] + "%" + sectionCalculation2.innerHTML.split("=")[1] + "%" + sectionCalculation3.innerHTML.split("=")[1] + "%" + sectionCalculation4.innerHTML.split("=")[1];
+
+                ticketsSoldPUSH = parseInt(sectionCalculation1.innerHTML.split("=")[0].split("x")[1]) + parseInt(sectionCalculation2.innerHTML.split("=")[0].split("x")[1]) + parseInt(sectionCalculation3.innerHTML.split("=")[0].split("x")[1]) + parseInt(sectionCalculation4.innerHTML.split("=")[0].split("x")[1]);
+
+                totalGrossPUSH = parseInt(sectionCalculation1.innerHTML.split("=")[0].split("x")[0]) * parseInt(sectionCalculation1.innerHTML.split("=")[0].split("x")[1]) + parseInt(sectionCalculation2.innerHTML.split("=")[0].split("x")[0]) * parseInt(sectionCalculation2.innerHTML.split("=")[0].split("x")[1]) + parseInt(sectionCalculation3.innerHTML.split("=")[0].split("x")[0]) * parseInt(sectionCalculation3.innerHTML.split("=")[0].split("x")[1]) + parseInt(sectionCalculation4.innerHTML.split("=")[0].split("x")[0]) * parseInt(sectionCalculation4.innerHTML.split("=")[0].split("x")[1]);
+
+                // console.log();
+
+            } else if (reference.children.length == 6) {
+                classes = opSectionName1.innerHTML + "%" + opSectionName2.innerHTML + "%" + opSectionName3.innerHTML;
+
+                occupancy = sectionCalculation1.innerHTML.split("=")[0] + "%" + sectionCalculation2.innerHTML.split("=")[0] + "%" + sectionCalculation3.innerHTML.split("=")[0];
+
+                gross = sectionCalculation1.innerHTML.split("=")[1] + "%" + sectionCalculation2.innerHTML.split("=")[1] + "%" + sectionCalculation3.innerHTML.split("=")[1];
+
+                ticketsSoldPUSH = parseInt(sectionCalculation1.innerHTML.split("=")[0].split("x")[1]) + parseInt(sectionCalculation2.innerHTML.split("=")[0].split("x")[1]) + parseInt(sectionCalculation3.innerHTML.split("=")[0].split("x")[1]);
+
+                totalGrossPUSH = parseInt(sectionCalculation1.innerHTML.split("=")[0].split("x")[0]) * parseInt(sectionCalculation1.innerHTML.split("=")[0].split("x")[1]) + parseInt(sectionCalculation2.innerHTML.split("=")[0].split("x")[0]) * parseInt(sectionCalculation2.innerHTML.split("=")[0].split("x")[1]) + parseInt(sectionCalculation3.innerHTML.split("=")[0].split("x")[0]) * parseInt(sectionCalculation3.innerHTML.split("=")[0].split("x")[1]);
+
+            } else if (reference.children.length == 4) {
+                classes = opSectionName1.innerHTML + "%" + opSectionName2.innerHTML;
+
+                occupancy = sectionCalculation1.innerHTML.split("=")[0] + "%" + sectionCalculation2.innerHTML.split("=")[0];
+
+                gross = sectionCalculation1.innerHTML.split("=")[1] + "%" + sectionCalculation2.innerHTML.split("=")[1];
+
+                ticketsSoldPUSH = parseInt(sectionCalculation1.innerHTML.split("=")[0].split("x")[1]) + parseInt(sectionCalculation2.innerHTML.split("=")[0].split("x")[1]);
+
+                totalGrossPUSH = parseInt(sectionCalculation1.innerHTML.split("=")[0].split("x")[0]) * parseInt(sectionCalculation1.innerHTML.split("=")[0].split("x")[1]) + parseInt(sectionCalculation2.innerHTML.split("=")[0].split("x")[0]) * parseInt(sectionCalculation2.innerHTML.split("=")[0].split("x")[1]);
+
+            } else if (reference.children.length == 2) {
+                classes = opSectionName1.innerHTML;
+
+                occupancy = sectionCalculation1.innerHTML.split("=")[0];
+
+                gross = sectionCalculation1.innerHTML.split("=")[1];
+
+                ticketsSoldPUSH = parseInt(sectionCalculation1.innerHTML.split("=")[0].split("x")[1]);
+
+                totalGrossPUSH = parseInt(sectionCalculation1.innerHTML.split("=")[0].split("x")[0]) * parseInt(sectionCalculation1.innerHTML.split("=")[0].split("x")[1]);
+            }
+            // console.log(classes,occupancy,gross);
+            // console.log(totalGrossPUSH)
+
+            reportTheaters.push(opTheaterName.innerHTML);
+            reportTicketSold.push(ticketsSoldPUSH);
+            reportTheaterGross.push(totalGrossPUSH);
+
+            dr_Classes.push(classes);
+            dr_occupancy.push(occupancy);
+            dr_Gross.push(gross);
+
+            // console.log(gross);
+
+
+        }
+
+        function viewReport(posRef) {
+            screen2.style.display = "none";
+            screen1.style.display = "none";
+            footer.style.display = "none";
+            screen3.style.display = "flex";
+            totalReport.style.display = "flex";
+            controlButtons.style.display = "flex";
+            let Screen3Content = document.getElementById("Screen3Content");
+            Screen3Content.remove();
+            displayReport(reportTheaters, reportTheaterGross, reportTicketSold);
+            if (posRef == 2) {
+                pos = 2;
+            } else if (posRef == 1) {
+                pos = 1;
+            } else {
+                alert(posRef);
+            }
+        }
+        displayReport(reportTheaters, reportTheaterGross, reportTicketSold);
 
 
     </script>
