@@ -789,7 +789,7 @@
     </div>
     <div class="controlButtons">
         <!-- <button>Clear</button> -->
-        <button onclick="window.print()">Print</button>
+        <button onclick="clearReport()">Clear</button>
         <button onclick="backtoScreen2_1()">Back</button>
     </div>
 
@@ -1293,7 +1293,7 @@
                 let cancelIconContainer = document.createElement("div");
                 cancelIconContainer.classList.add("cancelIconContainer");
                 let cancleIcon = document.createElement("img");
-                cancleIcon.setAttribute("src", "/cancel_Icon.png");
+                cancleIcon.setAttribute("src", "https://itsram175.github.io/Theater_Gross_Calculator/cancel_Icon.png");
                 cancleIcon.classList.add("cancleIcon");
                 cancleIcon.setAttribute("onclick", "removeTheaterFromList(this.parentNode.parentNode)");
                 cancelIconContainer.appendChild(cancleIcon);
@@ -1322,7 +1322,7 @@
                 soldTickets3.innerText = reportTicketSold[i] + " Tickets Sold";
 
                 let downArrow = document.createElement("img");
-                downArrow.setAttribute("src", "/down_Arrow.png");
+                downArrow.setAttribute("src", "https://itsram175.github.io/Theater_Gross_Calculator/down_Arrow.png");
                 downArrow.classList.add("downArrow");
                 downArrow.setAttribute("id", "downArrow")
                 downArrow.setAttribute("onclick", "expandList(this.parentNode.parentNode)");
@@ -1620,6 +1620,25 @@
                 alert(posRef);
             }
         }
+
+        function clearReport() {
+            reportTheaters = []
+            reportTicketSold = []
+            reportTheaterGross = []
+
+            dr_SUB = []
+            dr_SUB_OCC = []
+            dr_SUB_GRS = []
+
+            dr_Classes = []
+            dr_occupancy = []
+            dr_Gross = []
+
+            let Screen3Content = document.getElementById("Screen3Content");
+            Screen3Content.remove();
+            displayReport(reportTheaters, reportTheaterGross, reportTicketSold);
+        }
+
         displayReport(reportTheaters, reportTheaterGross, reportTicketSold);
 
 
