@@ -400,7 +400,8 @@
             /* background-color: #4F4F4F; */
             width: 70%;
             text-align: left;
-            
+            height: 25px;
+            overflow: hidden;
             height: 20px;
             font-size: 18px;
             margin: 0px;
@@ -410,7 +411,8 @@
             /* background-color: #F8F8FF; */
             width: 30%;
             text-align: right;
-            
+            height: 25px;
+            overflow: hidden;
             margin: 0px;
             font-size: 18px;
         }
@@ -1291,7 +1293,7 @@
                 let cancelIconContainer = document.createElement("div");
                 cancelIconContainer.classList.add("cancelIconContainer");
                 let cancleIcon = document.createElement("img");
-                cancleIcon.setAttribute("src", "https://itsram175.github.io/Theater_Gross_Calculator/cancel_Icon.png");
+                cancleIcon.setAttribute("src", "/cancel_Icon.png");
                 cancleIcon.classList.add("cancleIcon");
                 cancleIcon.setAttribute("onclick", "removeTheaterFromList(this.parentNode.parentNode)");
                 cancelIconContainer.appendChild(cancleIcon);
@@ -1320,7 +1322,7 @@
                 soldTickets3.innerText = reportTicketSold[i] + " Tickets Sold";
 
                 let downArrow = document.createElement("img");
-                downArrow.setAttribute("src", "https://itsram175.github.io/Theater_Gross_Calculator/down_Arrow.png");
+                downArrow.setAttribute("src", "/down_Arrow.png");
                 downArrow.classList.add("downArrow");
                 downArrow.setAttribute("id", "downArrow")
                 downArrow.setAttribute("onclick", "expandList(this.parentNode.parentNode)");
@@ -1391,6 +1393,16 @@
 
 
         function expandList(ref) {
+
+
+            // console.log(ref.innerHTML.toString().split("<p>"))
+
+            // console.log(ref.children[2].children[0].children.length);
+
+            // ref.style.height = "200px";
+
+            // console.log(ref.children[1].children[1])
+
             let detailedInfoLengthREF = ref.children[2].children[0].children;
             let detailedInfoLength = 0;
 
@@ -1401,6 +1413,8 @@
                     detailedInfoLength = detailedInfoLength;
                 }
             }
+
+            // console.log(detailedInfoLength);
 
             if (ref.style.height == "60px") {
                 if (detailedInfoLength == 1) {
@@ -1420,6 +1434,9 @@
                 ref.children[1].children[1].style.transform = "rotate(0deg)";
             }
 
+            // 85 115 145 170 
+
+            // console.log(ref.children[2].children[0].children)
 
         }
 
@@ -1441,12 +1458,18 @@
             reportTheaterGross.splice(reportTheaterGross.indexOf(grossInList), 1);
             reportTicketSold.splice(reportTicketSold.indexOf(ticketsInList), 1);
 
-        
+            // console.log(section1InList)
+            // console.log(dr_Classes[1]);
+            // console.log(section1InList == dr_Classes[1])
+            // console.log(dr_Classes.indexOf(section1InList));
+
             dr_Classes.splice(dr_Classes.indexOf(section1InList), 1);
             dr_occupancy.splice(dr_occupancy.indexOf(section2InList), 1);
             dr_Gross.splice(dr_Gross.indexOf(section3InList), 1);
 
-        
+            // console.log(section1InList);
+            // console.log(dr_Classes[1]);
+            // console.log(dr_Classes.indexOf(section1InList));
 
 
             let Screen3Content = document.getElementById("Screen3Content");
